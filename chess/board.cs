@@ -21,18 +21,6 @@ namespace chess
         private void setupbuttons()
         {
             Button[,] buttons = new Button[8,8];
-            /*
-            for(int i=0; i<buttons.Length; i++)
-            {
-                for(int j=0; j < buttons.GetLength(i) - 1; j++)
-                {
-                    buttons[i,j] = new Button()
-                    {
-                        Width = 12
-                    };
-                }
-            }
-            */
         }
 
 

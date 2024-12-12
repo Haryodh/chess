@@ -14,7 +14,7 @@ namespace chess
     public partial class Chess : Form
     {
         //--------------------------------------------------------------------------------
-        Panel panel = new Panel();
+        Displays display = new Displays();
         //--------------------------------------------------------------------------------
         public Chess()
         {
@@ -34,8 +34,8 @@ namespace chess
             boards[0] = new board(1);
 
 
-            this.Controls.Add(panel);
             displayBoard();
+            this.Controls.Add(display.panel);
         }
 
         private void resize(object sender, EventArgs e)
@@ -62,9 +62,9 @@ namespace chess
                 scaledheight = scaledwidth;
             }
 
-            panel.Location = new Point(screenwidth / 2 - scaledwidth / 2, screenheight / 2 - scaledheight / 2);
-            panel.Size = new Size(scaledwidth, scaledheight);
-            panel.BackColor = Color.Black;
+            display.panel.Location = new Point(screenwidth / 2 - scaledwidth / 2, screenheight / 2 - scaledheight / 2);
+            display.panel.Size = new Size(scaledwidth, scaledheight);
+            display.panel.BackColor = Color.Black;
         }
     }
 }

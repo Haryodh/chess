@@ -53,6 +53,7 @@
     <Compile Include="Chess.Designer.cs">
       <DependentUpon>Chess.cs</DependentUpon>
     </Compile>
+    <Compile Include="displays.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Chess.resx">
