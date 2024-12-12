@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,31 @@ namespace chess
         public board(int setup)
         {
             setboard(setup);
+            setupbuttons();
         }
+
+        private void setupbuttons()
+        {
+            Button[,] buttons = new Button[8,8];
+            /*
+            for(int i=0; i<buttons.Length; i++)
+            {
+                for(int j=0; j < buttons.GetLength(i) - 1; j++)
+                {
+                    buttons[i,j] = new Button()
+                    {
+                        Width = 12
+                    };
+                }
+            }
+            */
+        }
+
+
 
         public int[,] getboard() { return grid; }
 
-        public int setboard(int setup)
+        private int setboard(int setup)
         {
             /*
              * #0 = Base Game

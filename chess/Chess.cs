@@ -11,22 +11,22 @@ using System.Windows.Forms;
 namespace chess
 {
 
-    public partial class Form1 : Form
+    public partial class Chess : Form
     {
         //--------------------------------------------------------------------------------
         Panel panel = new Panel();
         //--------------------------------------------------------------------------------
-        public Form1()
+        public Chess()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Chess_Load(object sender, EventArgs e)
         {
             int screenwidth = this.Width;
             int screenheight = this.Height;
             this.Resize += resize;
-            this.MinimumSize = new Size(480,270);
+            this.MinimumSize = new Size(480, 270);
 
 
             board[] boards = new board[10];
@@ -49,7 +49,7 @@ namespace chess
 
             int screenwidth = this.Width;
             int screenheight = this.Height;
-            
+
             int scaledwidth = (this.Width * scale / 100);
             int scaledheight = (this.Height * scale / 100);
 
