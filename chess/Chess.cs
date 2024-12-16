@@ -14,7 +14,7 @@ namespace chess
     public partial class Chess : Form
     {
         //--------------------------------------------------------------------------------
-        Displays display = new Displays();
+        
         //--------------------------------------------------------------------------------
         public Chess()
         {
@@ -31,11 +31,10 @@ namespace chess
 
             board[] boards = new board[10];
             int currentboard = 0;
-            boards[0] = new board(1);
+            boards[currentboard] = new board(1);
 
-
-            displayBoard();
-            this.Controls.Add(display.panel);
+            displayBoard(boards[currentboard].getPanel());
+            this.Controls.Add(boards[currentboard].getPanel());
         }
 
         private void resize(object sender, EventArgs e)
@@ -43,7 +42,7 @@ namespace chess
             displayBoard();
         }
 
-        private void displayBoard()
+        private void displayBoard(Panel p)
         {
             int scale = 66;
 

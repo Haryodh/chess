@@ -12,6 +12,14 @@ namespace chess
     {
         private int[,] grid;
 
+        private static Displays display = new Displays();
+
+        public Panel getPanel()
+        {
+            return display.panel;
+        }
+
+
         public board(int setup)
         {
             setboard(setup);
