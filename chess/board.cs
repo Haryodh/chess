@@ -11,27 +11,13 @@ namespace chess
     internal class board
     {
         private int[,] grid;
+        private Panel p;
 
-        private static Displays display = new Displays();
-
-        public Panel getPanel()
-        {
-            return display.panel;
-        }
-
-
-        public board(int setup)
+        public board(int setup, ref Panel panel)
         {
             setboard(setup);
-            setupbuttons();
+            p = panel;
         }
-
-        private void setupbuttons()
-        {
-            Button[,] buttons = new Button[8,8];
-        }
-
-
 
         public int[,] getboard() { return grid; }
 
