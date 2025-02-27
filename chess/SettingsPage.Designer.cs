@@ -1,6 +1,6 @@
 ﻿namespace chess
 {
-    partial class Chess
+    partial class SettingsPage
     {
         /// <summary>
         /// Required designer variable.
@@ -30,17 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Chess
+            // SettingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1600, 865);
-            this.Margin = new System.Windows.Forms.Padding(6);
-            this.Name = "Chess";
-            this.Text = "d";
-            this.Load += new System.EventHandler(this.Chess_Load);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "SettingsPage";
+            this.Text = "SettingsPage";
+            this.Load += new System.EventHandler(this.SettingsPage_Load);
             this.ResumeLayout(false);
 
         }

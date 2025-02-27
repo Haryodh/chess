@@ -9,6 +9,9 @@ namespace chess
 {
     internal class Displays
     {
-        public Panel panel = new Panel();
+        public Panel boardPanel = new Panel();
+        public Button settingsButton = new Button(); 
+        public Label resolutionDisplay = new Label(); //Testing REMOVE
+
     }
 }
