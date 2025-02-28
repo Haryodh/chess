@@ -18,38 +18,29 @@ namespace chess
             InitializeComponent();
         }
 
-        //
-        Panel checkerOnePanel = new Panel();
-        Panel checkerTwoPanel = new Panel();
-
-        TrackBar checkerOneR = new TrackBar();
-        TrackBar checkerOneG = new TrackBar();
-        TrackBar checkerOneB = new TrackBar();
-
-        TrackBar checkerTwoR = new TrackBar();
-        TrackBar checkerTwoG = new TrackBar();
-        TrackBar checkerTwoB = new TrackBar();
-        //
+        
 
         private void SettingsPage_Load(object sender, EventArgs e)
         {
+            this.Resize += settingsPageRezie;
 
-            this.Controls.Add(checkerOnePanel);
-            this.Controls.Add(checkerTwoPanel);
+            this.Controls.Add(Displays.checkerOneColor);
+            this.Controls.Add(Displays.checkerTwoColor);
 
-            checkerOnePanel.BackColor = Chess.;
-            checkerTwoPanel.BackColor = Color.Green;
+        }
 
-            checkerOnePanel.Location = new Point(0, 0);
-            checkerTwoPanel.Location = new Point(0,checkerOnePanel.Height);
+        private void settingsPageRezie(object sender, EventArgs e)
+        {
+            updateDisplay();
+        }
 
-            checkerOnePanel.Controls.Add(checkerOneR);
-            checkerOnePanel.Controls.Add(checkerOneG);
-            checkerOnePanel.Controls.Add(checkerOneB);
+        private void updateDisplay()
+        {
+            Displays.checkerOneColor.Location = new Point(0, 0);
+            Displays.checkerOneColor.Size = new Size(this.Width/10,this.Height/10);
 
-            checkerTwoPanel.Controls.Add(checkerTwoR);
-            checkerTwoPanel.Controls.Add(checkerTwoG);
-            checkerTwoPanel.Controls.Add(checkerTwoB);
+            Displays.checkerTwoColor.Location = new Point(0, this.Height/10);
+            Displays.checkerTwoColor.Size = new Size(this.Width/10,this.Height/10);
 
         }
     }

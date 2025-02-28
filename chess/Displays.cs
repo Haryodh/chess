@@ -7,11 +7,14 @@ using System.Windows.Forms;
 
 namespace chess
 {
-    internal class Displays
+    internal static class Displays
     {
-        public Panel boardPanel = new Panel();
-        public Button settingsButton = new Button(); 
-        public Label resolutionDisplay = new Label(); //Testing REMOVE
+        public static Panel boardPanel = new Panel(); //Panel to contain board.
+        public static Button settingsButton = new Button(); //Button to go to settings
+        public static Label resolutionDisplay = new Label(); //Testing REMOVE
 
+
+        public static Button checkerOneColor = new Button(); //Button to change checker one color
+        public static Button checkerTwoColor = new Button(); //Button to change checker two color
     }
 }
