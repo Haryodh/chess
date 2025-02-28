@@ -7,20 +7,23 @@ using System.Threading.Tasks;
 
 namespace chess
 {
-    internal class Settings
+    internal static class Settings
     {
-        private Color checkerOneColor = Color.Black;
-        private Color CheckerTwoColor = Color.White;
+        private static Color checkerOneColor = Color.Black; //Checker one color.
+        private static Color CheckerTwoColor = Color.White; //Checker two color.
 
-        private int scale = 50;
+        private static int scale = 50; //Scale of the program.
 
-        public void setCheckerOneColor(int r, int g, int b)
+        public static void setCheckerOneColor(Color c) //Setter for color one.
         {
-            checkerOneColor = Color.FromArgb(r, g, b);
+            checkerOneColor = c;
         }
-        public void setCheckerTwoColor(int r, int g, int b)
+        public static void setCheckerTwoColor(Color c) //Setter for color two.
         {
-            CheckerTwoColor = Color.FromArgb(r, g, b);
+            CheckerTwoColor = c;
         }
+
+        public static Color getCheckerOneColor() { return checkerOneColor; } //Getter for color one.
+        public static Color getCheckerTwoColor() { return CheckerTwoColor; } //Getter for color two.
     }
 }

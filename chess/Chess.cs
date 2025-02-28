@@ -17,7 +17,8 @@ namespace chess
     {
         //--------------------------------------------------------------------------------
 
-        Settings settingsOptions = new Settings();
+        SettingsPage settings = new SettingsPage();
+
         //--------------------------------------------------------------------------------
         public Chess()
         {
@@ -43,15 +44,14 @@ namespace chess
             
         }
 
-        private void resize(object sender, EventArgs e)
+        private void resize(object sender, EventArgs e) //When the page is resized.
         {
             displayBoard();
         }
 
-        private void settingsClicked(object sender, EventArgs e)
+        private void settingsClicked(object sender, EventArgs e) //Settings Button is clicked.
         {
-            SettingsPage settings = new SettingsPage();
-            settings.Show();
+            settings.Show(); //Open the settings page.
         }
 
         private void displayBoard()
