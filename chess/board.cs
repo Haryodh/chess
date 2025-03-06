@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,16 @@ namespace chess
 {
     internal class board
     {
+        private Button[,] gridButtons; //Create an empty 2D-Array of buttons.
+
+        public board(int size) { gridButtons = new Button[size, size]; } //Initlaize the board.
+
+        public ref Button GetButton(int i, int j) { return ref gridButtons[i, j]; } //Get a certain button (by ref)
+
+        public void setButton(Button b, int i, int j) { gridButtons[i, j] = b; } //Set a certain button.
+
+        public int getSize() { return gridButtons.GetLength(0); } //Return the size of the board.
+
         
     }
-
-
 }

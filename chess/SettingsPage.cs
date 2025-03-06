@@ -37,6 +37,9 @@ namespace chess
             Displays.scaleSelect.Value = Settings.getScale();
             Displays.scaleSelect.ValueChanged += scaleChanged;
 
+            
+
+
             updateDisplay(); // Update scaling.
 
             this.FormClosing += closing; // When closing run closing function.

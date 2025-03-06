@@ -20,6 +20,9 @@ namespace chess
 
         SettingsPage settings = new SettingsPage();
 
+        board[] boards = new board[10]; //Array of boards, Temporary.
+        int currentBoard = 0;
+
         //--------------------------------------------------------------------------------
         public Chess()
         {
@@ -28,7 +31,7 @@ namespace chess
 
         private void Chess_Load(object sender, EventArgs e)
         {
-
+            
             this.Resize += resize; // Link to event handler for a form resize.
             this.MinimumSize = new Size(480, 270); // Set minimum size of the form
 
@@ -59,6 +62,10 @@ namespace chess
 
         private void displayBoard()
         {
+            //----------------------------------------------------
+
+            boards[currentBoard] = new board(8);
+
             //----------------------------------------------------
             int testScale = Settings.getScale(); //ignore REMOVE
 
@@ -91,8 +98,35 @@ namespace chess
 
 
 
-            Displays.settingsButton.Size = new Size(panelScaledWidth * 1 / 2 * testScale/100, panelScaledHeight * 1 / 2 * testScale/100);
+            Displays.settingsButton.Size = new Size(panelScaledWidth * 1 / 3 * testScale/100, panelScaledHeight * 1 / 3 * testScale/100);
             Displays.settingsButton.Location = new Point(screenWidth - Displays.settingsButton.Width - 20, 0);
+
+            //-------------------------BUTTONS--------------------------------
+
+            Displays.boardPanel.Controls.Clear(); //Yes, i'm re-adding it each time. Yes, I hate myself for this. Pray that I may one day repent for my crimes and seek forgiveness for my actions.
+
+            int size = boards[currentBoard].getSize();
+
+            for(int i = 0; i < size; i++) //Each Row
+            {
+                for (int j = 0; j < size; j++) //Each item in the current row
+                {
+
+                    Button currentButton = boards[currentBoard].GetButton(i, j); //Get the button
+                    currentButton = new Button(); //Make it a button
+                    Displays.boardPanel.Controls.Add(currentButton); //Add the button to the panel
+                    //------
+                    currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
+                    currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
+
+                    currentButton.Tag = new int[] { i,  j }; //For later use to reference which button is clicked.
+                    Console.WriteLine($"i:{(currentButton.Tag as int[])[0]}, j:{(currentButton.Tag as int[])[1]}"); //Testing
+                }
+
+            }
+                
+        
+            //----------------------------------------------------------------
         }
     }
 }
