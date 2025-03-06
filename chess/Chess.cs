@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,9 +41,11 @@ namespace chess
             Displays.settingsButton.BackgroundImageLayout = ImageLayout.Stretch; //Make image fit in the box.
             Displays.settingsButton.Click += settingsClicked; //Event handler for click on settings button
 
-
+            
             
         }
+
+        
 
         private void resize(object sender, EventArgs e) //When the page is resized.
         {
@@ -57,7 +60,7 @@ namespace chess
         private void displayBoard()
         {
             //----------------------------------------------------
-            int testScale = 66; //ignore REMOVE
+            int testScale = Settings.getScale(); //ignore REMOVE
 
 
             int screenWidth = this.Width;
@@ -79,7 +82,7 @@ namespace chess
 
             Displays.resolutionDisplay.Location = new Point(0, screenHeight - 70); //For testing REMOVE
             Displays.resolutionDisplay.Size = new Size(screenWidth * 1 / 5 * testScale / 100, screenHeight * 1 / 5 * testScale / 100); //For testing REMOVE
-            Displays.resolutionDisplay.Text = ("Width:" + screenWidth + " Height:" + screenHeight); //For testing REMOVE
+            Displays.resolutionDisplay.Text = ("Width:" + screenWidth + " Height:" + screenHeight + " Scale:" + Settings.getScale()); //For testing REMOVE
 
 
             Displays.boardPanel.Location = new Point(screenWidth / 2 - panelScaledWidth / 2, screenHeight / 2 - panelScaledHeight / 2); //Puts the panel in the center
@@ -88,7 +91,7 @@ namespace chess
 
 
 
-            Displays.settingsButton.Size = new Size(panelScaledWidth * 1 / 5 * testScale/100, panelScaledHeight * 1 / 5 * testScale/100);
+            Displays.settingsButton.Size = new Size(panelScaledWidth * 1 / 2 * testScale/100, panelScaledHeight * 1 / 2 * testScale/100);
             Displays.settingsButton.Location = new Point(screenWidth - Displays.settingsButton.Width - 20, 0);
         }
     }

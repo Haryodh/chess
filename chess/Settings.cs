@@ -25,5 +25,9 @@ namespace chess
 
         public static Color getCheckerOneColor() { return checkerOneColor; } //Getter for color one.
         public static Color getCheckerTwoColor() { return CheckerTwoColor; } //Getter for color two.
+
+        public static int getScale() { return scale; } 
+        public static void setScale(int newScale) { scale = newScale; }
+
     }
 }
