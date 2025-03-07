@@ -18,6 +18,8 @@ namespace chess
         public static Button checkerTwoColor = new Button(); //Button to change checker two color
 
         public static TrackBar scaleSelect = new TrackBar(); //Trackbar to select scale
+
+        public static NumericUpDown gameSelector = new NumericUpDown(); //Number selector to pick game
     
     }
 }

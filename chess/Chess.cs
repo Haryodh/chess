@@ -20,8 +20,9 @@ namespace chess
 
         SettingsPage settings = new SettingsPage();
 
-        board[] boards = new board[10]; //Array of boards, Temporary.
+        board[] boards = new board[10]; //Array of boards
         int currentBoard = 0;
+        
 
         //--------------------------------------------------------------------------------
         public Chess()
@@ -31,28 +32,70 @@ namespace chess
 
         private void Chess_Load(object sender, EventArgs e)
         {
+            boards[currentBoard] = new board(8);
+
             
             this.Resize += resize; // Link to event handler for a form resize.
             this.MinimumSize = new Size(480, 270); // Set minimum size of the form
 
-            displayBoard(); //Update size and data for the board.
+            displayUI(); //Update size and data for the board.
             this.Controls.Add(Displays.boardPanel); //Add panel to the form
             this.Controls.Add(Displays.resolutionDisplay); //Testing REMOVE
+
+            this.Controls.Add(Displays.gameSelector);
+            Displays.gameSelector.Maximum = boards.Length-1;
+            Displays.gameSelector.Minimum = 0;
+            Displays.gameSelector.Value = 0;
+            Displays.gameSelector.ValueChanged += gameChange;
 
             this.Controls.Add(Displays.settingsButton); //Add settings button to the form
             Displays.settingsButton.BackgroundImage = Resources.settings_button; //Set image of settings button.
             Displays.settingsButton.BackgroundImageLayout = ImageLayout.Stretch; //Make image fit in the box.
             Displays.settingsButton.Click += settingsClicked; //Event handler for click on settings button
 
-            
-            
         }
 
+        private void gameChange(object sender, EventArgs e)
+        {
+            NumericUpDown n = sender as NumericUpDown;
+            int newGameNumber = Convert.ToInt32(n.Value);
+            if (boards[newGameNumber] == null)
+            {
+                boards[newGameNumber] = new board(10);
+            }
+            currentBoard = newGameNumber;
+
+
+
+            Displays.boardPanel.Controls.Clear(); //Clears all buttons from current panel.
+
+            int size = boards[currentBoard].getSize();
+
+            for (int i = 0; i < size; i++) //Each Row
+            {
+                for (int j = 0; j < size; j++) //Each item in the current row
+                {
+
+                    Button currentButton = boards[currentBoard].GetButton(i, j); //Get the button
+                    currentButton = new Button(); //Make it a button
+                    Displays.boardPanel.Controls.Add(currentButton); //Add the button to the panel
+                    //------
+                    currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
+                    currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
+
+                    currentButton.Tag = new int[] { i, j }; //For later use to reference which button is clicked.
+                    //Console.WriteLine($"i:{(currentButton.Tag as int[])[0]}, j:{(currentButton.Tag as int[])[1]}"); //Testing
+                }
+
+            }
+
+            displayUI();
+        }
         
 
         private void resize(object sender, EventArgs e) //When the page is resized.
         {
-            displayBoard();
+            displayUI();
         }
 
         private void settingsClicked(object sender, EventArgs e) //Settings Button is clicked.
@@ -60,13 +103,9 @@ namespace chess
             settings.Show(); //Open the settings page.
         }
 
-        private void displayBoard()
+        private void displayUI()
         {
-            //----------------------------------------------------
 
-            boards[currentBoard] = new board(8);
-
-            //----------------------------------------------------
             int testScale = Settings.getScale(); //ignore REMOVE
 
 
@@ -103,29 +142,24 @@ namespace chess
 
             //-------------------------BUTTONS--------------------------------
 
-            Displays.boardPanel.Controls.Clear(); //Yes, i'm re-adding it each time. Yes, I hate myself for this. Pray that I may one day repent for my crimes and seek forgiveness for my actions.
-
             int size = boards[currentBoard].getSize();
 
-            for(int i = 0; i < size; i++) //Each Row
+            for (int i = 0; i < size; i++) //Each Row
             {
                 for (int j = 0; j < size; j++) //Each item in the current row
                 {
 
                     Button currentButton = boards[currentBoard].GetButton(i, j); //Get the button
-                    currentButton = new Button(); //Make it a button
-                    Displays.boardPanel.Controls.Add(currentButton); //Add the button to the panel
+
                     //------
                     currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
                     currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
 
-                    currentButton.Tag = new int[] { i,  j }; //For later use to reference which button is clicked.
-                    Console.WriteLine($"i:{(currentButton.Tag as int[])[0]}, j:{(currentButton.Tag as int[])[1]}"); //Testing
                 }
 
             }
-                
-        
+
+
             //----------------------------------------------------------------
         }
     }

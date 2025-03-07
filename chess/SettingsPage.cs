@@ -55,7 +55,7 @@ namespace chess
         private void closing(object sender, FormClosingEventArgs e) //Prevents this form from fully closing and just hides it.
         {
             this.Hide();
-            e.Cancel = true;
+            e.Cancel = true; //Stops from disposing the form when closed.
         }
 
         private void checkerOneButtonClick(object sender, EventArgs e)
