@@ -155,7 +155,7 @@ namespace chess
 
             for (int i = 0; i < size-1; i++) //Each Row
             {
-                for (int j = 0; j < size-1; j++) //Each item in the current row
+                for (int j = 0; j < size-1; j++) //Each item in the current row.
                 {
                     if (boards[currentBoard].GetButton(i, j) != null)
                     {
