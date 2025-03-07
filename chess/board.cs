@@ -21,6 +21,12 @@ namespace chess
 
         public int getSize() { return gridButtons.GetLength(0); } //Return the size of the board.
 
+        public void setButtonSize(int i, int j, Size size, Point point)
+        {
+            gridButtons[i,j].Size = size;
+            gridButtons[i,j].Location = point;
+        }
+
         
     }
 }
