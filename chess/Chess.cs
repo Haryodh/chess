@@ -160,13 +160,11 @@ namespace chess
                 {
 
                     Button currentButton = boards[currentBoard].GetButton(i, j);
-                    if (currentButton != null)
-                    {
+                    //if (currentButton != null)
+                    //{
                         currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
                         currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
-
-
-                    }
+                    //}
 
                 }
 
