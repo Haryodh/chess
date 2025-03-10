@@ -88,6 +88,7 @@ namespace chess
 
                     Button currentButton = board.GetButton(i, j); //Get the button
                     currentButton = new Button(); //Make it a button
+                    board.setButton(currentButton, i, j);
                     Displays.boardPanel.Controls.Add(currentButton); //Add the button to the panel
                     //------
                     currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
@@ -145,7 +146,7 @@ namespace chess
 
 
 
-            Displays.settingsButton.Size = new Size(panelScaledWidth * 1 / 3 * testScale/100, panelScaledHeight * 1 / 3 * testScale/100);
+            Displays.settingsButton.Size = new Size(panelScaledWidth * 1 / 3 * testScale / 100, panelScaledHeight * 1 / 3 * testScale / 100);
             Displays.settingsButton.Location = new Point(screenWidth - Displays.settingsButton.Width - 20, 0);
 
             //-------------------------BUTTONS--------------------------------
@@ -153,31 +154,25 @@ namespace chess
             int size = boards[currentBoard].getSize();
 
 
-            for (int i = 0; i < size-1; i++) //Each Row
+            for (int i = 0; i < size - 1; i++) //Each Row
             {
-                for (int j = 0; j < size-1; j++) //Each item in the current row.
+                for (int j = 0; j < size - 1; j++) //Each item in the current row.
                 {
-                    if (boards[currentBoard].GetButton(i, j) != null)
+
+                    Button currentButton = boards[currentBoard].GetButton(i, j);
+                    if (currentButton != null)
                     {
-                        Button currentButton = boards[currentBoard].GetButton(i, j);
-
-                        //Size s = new Size(Displays.boardPanel.Width / size, Displays.boardPanel.Height / size); //Size the button appropriately
-                        //Point p = new Point((Displays.boardPanel.Width / size) * j, (Displays.boardPanel.Height / size) * i); //Place the button appropriately
-
                         currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
                         currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
 
-                    }
 
-                    //currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
-                    //currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
+                    }
 
                 }
 
+
+                //----------------------------------------------------------------
             }
-
-
-            //----------------------------------------------------------------
         }
     }
 }

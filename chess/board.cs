@@ -27,6 +27,26 @@ namespace chess
             gridButtons[i,j].Location = point;
         }
 
+        public void orderButtons()
+        {
+            int size = gridButtons.GetLength(0);
+            for (int i = 0; i < gridButtons.GetLength(0) - 1; i++) //Each Row
+            {
+                for (int j = 0; j < gridButtons.GetLength(1) - 1; j++) //Each item in the current row.
+                {
+                    
+                    Button currentButton = gridButtons[i, j];
+                    if (currentButton != null)
+                    {
+                        currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
+                        currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
+
+                    }
+                }
+
+            }
+        }
+
         
     }
 }
