@@ -63,7 +63,7 @@ namespace chess
             int newGameNumber = Convert.ToInt32(n.Value);
             if (boards[newGameNumber] == null)
             {
-                boards[newGameNumber] = new board(8 + newGameNumber);
+                boards[newGameNumber] = new board(0);
             }
             currentBoard = newGameNumber;
 

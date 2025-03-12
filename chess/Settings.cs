@@ -29,5 +29,11 @@ namespace chess
         public static int getScale() { return scale; } 
         public static void setScale(int newScale) { scale = newScale; }
 
+        public static readonly Dictionary<int, Image> pieceImages = new Dictionary<int, Image>
+        {
+            { },
+            { }
+        }
+
     }
 }
