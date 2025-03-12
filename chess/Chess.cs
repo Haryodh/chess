@@ -96,6 +96,9 @@ namespace chess
 
                     currentButton.Tag = new int[] { i, j }; //For later use to reference which button is clicked.
                     //Console.WriteLine($"i:{(currentButton.Tag as int[])[0]}, j:{(currentButton.Tag as int[])[1]}"); //Testing
+
+                    currentButton.FlatStyle = FlatStyle.Flat;
+
                 }
             }
             displayUI();
@@ -164,7 +167,19 @@ namespace chess
                     {
                         currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
                         currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
+
+                        if ((i + j) % 2 == 0)
+                        {
+                            currentButton.BackColor = Settings.getCheckerOneColor();
+                        }
+                        else
+                        {
+                            currentButton.BackColor = Settings.getCheckerTwoColor();
+                        }
+
                     }
+
+                    
 
                 }
 

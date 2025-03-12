@@ -12,8 +12,9 @@ namespace chess
     internal class board
     {
         private Button[,] gridButtons; //Create an empty 2D-Array of buttons.
+        private piece[,] pieces;
 
-        public board(int size) { gridButtons = new Button[size, size]; } //Initlaize the board.
+        public board(int size) { gridButtons = new Button[size, size]; pieces = new piece[size, size]; } //Initlaize the board.
 
         public ref Button GetButton(int i, int j) { return ref gridButtons[i, j]; } //Get a certain button (by ref)
 
@@ -27,5 +28,16 @@ namespace chess
             gridButtons[i,j].Location = point;
         }
 
+
+        private void boardCatalogue(int boardNum)
+        {
+            switch (boardNum)
+            {
+                case 0: 
+                    
+
+                default:
+            }
+        }
     }
 }
