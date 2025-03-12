@@ -9,8 +9,8 @@ namespace chess
 {
     internal static class Settings
     {
-        private static Color checkerOneColor = Color.Black; //Checker one color.
-        private static Color CheckerTwoColor = Color.White; //Checker two color.
+        private static Color checkerOneColor = Color.White; //Checker one color.
+        private static Color CheckerTwoColor = Color.Black; //Checker two color.
 
         private static int scale = 50; //Scale of the program.
 
@@ -28,6 +28,12 @@ namespace chess
 
         public static int getScale() { return scale; } 
         public static void setScale(int newScale) { scale = newScale; }
+
+        public static readonly Dictionary<int, Image> pieceImages = new Dictionary<int, Image>
+        {
+            { },
+            { }
+        }
 
     }
 }

@@ -37,6 +37,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Chess";
             this.Text = "Chess";
             this.Load += new System.EventHandler(this.Chess_Load);
