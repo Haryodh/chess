@@ -86,9 +86,9 @@ namespace chess
                 for (int j = 0; j < size; j++) //Each item in the current row
                 {
 
-                    Button currentButton = board.GetButton(i, j); //Get the button
+                    Button currentButton = board.GetButton(i, j); //Get the button as ref
                     currentButton = new Button(); //Make it a button
-                    board.setButton(currentButton, i, j);
+                    board.setButton(currentButton, i, j); //Set it for some reason? doesn't work without it.
                     Displays.boardPanel.Controls.Add(currentButton); //Add the button to the panel
                     //------
                     currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
@@ -154,17 +154,17 @@ namespace chess
             int size = boards[currentBoard].getSize();
 
 
-            for (int i = 0; i < size - 1; i++) //Each Row
+            for (int i = 0; i < size; i++) //Each Row
             {
-                for (int j = 0; j < size - 1; j++) //Each item in the current row.
+                for (int j = 0; j < size; j++) //Each item in the current row.
                 {
 
                     Button currentButton = boards[currentBoard].GetButton(i, j);
-                    //if (currentButton != null)
-                    //{
+                    if (currentButton != null)
+                    {
                         currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
                         currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
-                    //}
+                    }
 
                 }
 
