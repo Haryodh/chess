@@ -96,5 +96,41 @@
   <ItemGroup>
     <None Include="Resources\true_art_settings.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_bishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_king.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_knight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_pawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_queen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_rook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\king.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\knight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\queen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rook.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

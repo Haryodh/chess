@@ -15,7 +15,7 @@ namespace chess
         private Button[,] gridButtons; //Create an empty 2D-Array of buttons.
         private piece[,] pieces;
 
-        public board(int boardNum) { boardCatalogue(0); } //Initlaize the board.
+        public board(int boardNum) { boardCatalogue(boardNum); } //Initlaize the board.
 
         public ref Button GetButton(int i, int j) { return ref gridButtons[i, j]; } //Get a certain button (by ref)
 
@@ -85,5 +85,12 @@ namespace chess
                     break;
             }
         }
+
+        public piece GetPiece(int row, int column)
+        {
+            return pieces[row, column];
+        }
+
+        public piece
     }
 }

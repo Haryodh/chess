@@ -51,34 +51,37 @@ namespace chess
         {
             switch (pieceName.ToLower())
             {
-                case "empty": name = pieceName; type = 0; break;
+                case "empty": name = "Empty"; type = 0; break;
 
-                case "white pawn": name = pieceName; type = 11; break;
+                case "white pawn": name = "White Pawn"; type = 11; break;
 
-                case "white knight": name = pieceName; type = 12; break;
+                case "white knight": name = "White Knight"; type = 12; break;
 
-                case "white bishop": name = pieceName; type = 13; break;
+                case "white bishop": name = "White Bishop"; type = 13; break;
 
-                case "white rook": name = pieceName; type = 14; break;
+                case "white rook": name = "White Rook"; type = 14; break;
 
-                case "white queen": name = pieceName; type = 15; break;
+                case "white queen": name = "White Queen"; type = 15; break;
 
-                case "white king": name = pieceName; type = 16; break;
+                case "white king": name = "White King"; type = 16; break;
 
-                case "black pawn": name = pieceName  ; type = 101; break;
+                case "black pawn": name = "Black Pawn"  ; type = 101; break;
 
-                case "black knight": name = pieceName; type = 102; break;
+                case "black knight": name = "Black Knight"; type = 102; break;
 
-                case "black bishop": name = pieceName; type = 103; break;
+                case "black bishop": name = "Black Bishop"; type = 103; break;
 
-                case "black rook": name = pieceName; type = 104; break;
+                case "black rook": name = "Black Rook"; type = 104; break;
 
-                case "black queen": name = pieceName; type = 105; break;
+                case "black queen": name = "Black Queen"; type = 105; break;
 
-                case "black king": name = pieceName; type = 106; break;
+                case "black king": name = "Black King"; type = 106; break;
 
                 default: type = 0; name = "Empty"; break;
             }
         }
+
+        
+
     }
 }
