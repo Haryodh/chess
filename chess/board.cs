@@ -32,15 +32,16 @@ namespace chess
 
         private void boardCatalogue(int boardNum)
         {
-            
+            int size = 8; //Just in case default to 8. If forget to set in code this may cause a crash.
             switch (boardNum)
             {
                 case 0: // Default Game setup
-                    gridButtons = new Button[8, 8]; pieces = new piece[8, 8];
+                    size = 8;
+                    gridButtons = new Button[size, size]; pieces = new piece[size, size];
 
-                    for (int i = 0; i < 8; i++)
+                    for (int i = 0; i < size; i++)
                     {
-                        for (int j = 0; j < 8; j++)
+                        for (int j = 0; j < size; j++)
                         {
                             pieces[i, j] = new piece("Empty");
                         }
@@ -54,7 +55,7 @@ namespace chess
                     pieces[0, 5] = new piece("black bishop");
                     pieces[0, 6] = new piece("black knight");
                     pieces[0, 7] = new piece("black rook");
-                    for(int i = 0; i < 8; i++)
+                    for(int i = 0; i < size; i++)
                     {
                         pieces[1, i] = new piece("black pawn");
                         pieces[6, i] = new piece("white pawn");
@@ -69,8 +70,42 @@ namespace chess
                     pieces[7, 7] = new piece("white rook");
                     break;
 
+                case 1: //Queen mayhem
+                    size = 10;
+                    gridButtons = new Button[size, size]; pieces = new piece[size, size];
+
+                    for (int i = 0; i < size; i++)
+                    {
+                        for (int j = 0; j < size; j++)
+                        {
+                            pieces[i, j] = new piece("Empty");
+                        }
+                    }
+
+                    for (int i = 0; i < size; i++)
+                    {
+                        pieces[0, i] = new piece("black queen");
+                        pieces[1, i] = new piece("black queen");
+
+                        pieces[size-2, i] = new piece("white queen");
+                        pieces[size-1, i] = new piece("white queen");
+                    }
+                    break;
+
+
+
                 default:
-                    gridButtons = new Button[8, 8]; pieces = new piece[8, 8];
+                    size = 8;
+                    gridButtons = new Button[size, size]; pieces = new piece[size, size];
+
+                    for (int i = 0; i < size; i++)
+                    {
+                        for (int j = 0; j < size; j++)
+                        {
+                            pieces[i, j] = new piece("Empty");
+                        }
+                    }
+
                     pieces[0, 0] = new piece("black rook");
                     pieces[0, 1] = new piece("black knight");
                     pieces[0, 2] = new piece("black bishop");
@@ -79,7 +114,7 @@ namespace chess
                     pieces[0, 5] = new piece("black bishop");
                     pieces[0, 6] = new piece("black knight");
                     pieces[0, 7] = new piece("black rook");
-                    for (int i = 0; i < 8; i++)
+                    for (int i = 0; i < size; i++)
                     {
                         pieces[1, i] = new piece("black pawn");
                         pieces[6, i] = new piece("white pawn");

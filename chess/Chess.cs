@@ -32,7 +32,7 @@ namespace chess
 
         private void Chess_Load(object sender, EventArgs e)
         {
-            boards[currentBoard] = new board(8);
+            boards[currentBoard] = new board(0);
             
 
             
@@ -63,7 +63,7 @@ namespace chess
             int newGameNumber = Convert.ToInt32(n.Value);
             if (boards[newGameNumber] == null)
             {
-                boards[newGameNumber] = new board(0);
+                boards[newGameNumber] = new board(newGameNumber);
             }
             currentBoard = newGameNumber;
 
