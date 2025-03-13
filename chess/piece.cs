@@ -81,7 +81,14 @@ namespace chess
             }
         }
 
-        
+        public int getType()
+        {
+            return type;
+        }
+        public string getName()
+        {
+            return name;
+        }
 
     }
 }

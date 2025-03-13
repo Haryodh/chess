@@ -17,7 +17,7 @@ namespace chess
 
         public board(int boardNum) { boardCatalogue(boardNum); } //Initlaize the board.
 
-        public ref Button GetButton(int i, int j) { return ref gridButtons[i, j]; } //Get a certain button (by ref)
+        public ref Button getButton(int i, int j) { return ref gridButtons[i, j]; } //Get a certain button (by ref)
 
         public void setButton(Button b, int i, int j) { gridButtons[i, j] = b; } //Set a certain button.
 
@@ -32,10 +32,20 @@ namespace chess
 
         private void boardCatalogue(int boardNum)
         {
+            
             switch (boardNum)
             {
                 case 0: // Default Game setup
                     gridButtons = new Button[8, 8]; pieces = new piece[8, 8];
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        for (int j = 0; j < 8; j++)
+                        {
+                            pieces[i, j] = new piece("Empty");
+                        }
+                    }
+
                     pieces[0, 0] = new piece("black rook");
                     pieces[0, 1] = new piece("black knight");
                     pieces[0, 2] = new piece("black bishop");
@@ -86,11 +96,14 @@ namespace chess
             }
         }
 
-        public piece GetPiece(int row, int column)
+        public ref piece getPiece(int row, int column)
         {
-            return pieces[row, column];
+            return ref pieces[row, column];
         }
 
-        public piece
+        public void setPiece(piece piece, int i, int j)
+        {
+            pieces[i, j] = piece;
+        }
     }
 }

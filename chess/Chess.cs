@@ -86,7 +86,7 @@ namespace chess
                 for (int j = 0; j < size; j++) //Each item in the current row
                 {
 
-                    Button currentButton = board.GetButton(i, j); //Get the button as ref
+                    Button currentButton = board.getButton(i, j); //Get the button as ref
                     currentButton = new Button(); //Make it a button
                     board.setButton(currentButton, i, j); //Set it for some reason? doesn't work without it.
                     Displays.boardPanel.Controls.Add(currentButton); //Add the button to the panel
@@ -162,13 +162,14 @@ namespace chess
                 for (int j = 0; j < size; j++) //Each item in the current row.
                 {
 
-                    Button currentButton = boards[currentBoard].GetButton(i, j);
+                    Button currentButton = boards[currentBoard].getButton(i, j); //set currentButton as current button
+                    piece currentPiece = boards[currentBoard].getPiece(i, j); //set currentPiece as the current piece
                     if (currentButton != null)
                     {
                         currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately
                         currentButton.Location = new Point((currentButton.Parent.Width / size) * j, (currentButton.Parent.Height / size) * i); //Place the button appropriately
 
-                        if ((i + j) % 2 == 0)
+                        if ((i + j) % 2 == 0) //Checker Pattern
                         {
                             currentButton.BackColor = Settings.getCheckerOneColor();
                         }
@@ -177,6 +178,14 @@ namespace chess
                             currentButton.BackColor = Settings.getCheckerTwoColor();
                         }
 
+
+                        if (currentPiece != null)
+                        {
+                            
+                            currentButton.BackgroundImage = Settings.pieceImages[currentPiece.getType()];
+                            currentButton.BackgroundImageLayout = ImageLayout.Stretch; 
+                        }
+                        
                     }
 
                     
