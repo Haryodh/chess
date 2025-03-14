@@ -47,5 +47,7 @@ namespace chess
             {106, Resources.black_king },
         };
 
+        public static int[] lastPressed = {int.MaxValue, int.MaxValue}; 
+
     }
 }

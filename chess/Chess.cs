@@ -99,8 +99,17 @@ namespace chess
 
                     currentButton.FlatStyle = FlatStyle.Flat;
 
+                    currentButton.Click += checkerClick;
                 }
             }
+            displayUI();
+        }
+
+        private void checkerClick(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            int[] pos = button.Tag as int[];
+            Settings.lastPressed[0] = pos[0]; Settings.lastPressed[1] = pos[1];
             displayUI();
         }
         
@@ -187,14 +196,21 @@ namespace chess
                         }
                         
                     }
-
-                    
-
                 }
-
-
-                //----------------------------------------------------------------
             }
+
+            if (Settings.lastPressed[0] < boards[currentBoard].getSize() && Settings.lastPressed[1] < boards[currentBoard].getSize())
+            {
+                Button matchingButton = boards[currentBoard].getButton(Settings.lastPressed[0], Settings.lastPressed[1]);
+                if (matchingButton.BackColor != Color.Red)
+                {
+                    matchingButton.BackColor = Color.Red;
+                }
+                else { matchingButton.BackColor = Color.Green; }
+            }
+
+
+            //----------------------------------------------------------------
         }
     }
 }
