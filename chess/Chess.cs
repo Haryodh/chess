@@ -59,6 +59,8 @@ namespace chess
 
         private void gameChange(object sender, EventArgs e)
         {
+            Settings.lastPressed = new int[] { int.MaxValue, int.MaxValue };
+
             NumericUpDown n = sender as NumericUpDown;
             int newGameNumber = Convert.ToInt32(n.Value);
             if (boards[newGameNumber] == null)
@@ -111,6 +113,11 @@ namespace chess
             int[] pos = button.Tag as int[];
             Settings.lastPressed[0] = pos[0]; Settings.lastPressed[1] = pos[1];
             displayUI();
+
+            if (boards[currentBoard].getPiece(pos[0], pos[1]).getType() != 0)
+            {
+                //boards[currentBoard]. //
+            }
         }
         
 

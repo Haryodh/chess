@@ -8,6 +8,7 @@ namespace chess
 {
     internal class piece
     {
+        private int moves = 0;
         private string name = "Empty";
         private int type = 0; //0 = empty, 1 = Pawn, 2 = Knight, 3 = Bishop, 4 = Rook, 5 = Queen, 6 = King , +10 for white, +100 for Black
 
@@ -88,6 +89,11 @@ namespace chess
         public string getName()
         {
             return name;
+        }
+
+        public void pieceMoves(int row, int column)
+        {
+
         }
 
     }
