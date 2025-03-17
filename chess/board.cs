@@ -15,6 +15,10 @@ namespace chess
         private Button[,] gridButtons; //Create an empty 2D-Array of buttons.
         private piece[,] pieces;
 
+        public List<int[]> possibleMoves = new List<int[]>(); //List of possible moves for the selected piece.
+        
+        
+
         public board(int boardNum) { boardCatalogue(boardNum); } //Initlaize the board.
 
         public ref Button getButton(int i, int j) { return ref gridButtons[i, j]; } //Get a certain button (by ref)
@@ -68,6 +72,8 @@ namespace chess
                     pieces[7, 5] = new piece("white bishop");
                     pieces[7, 6] = new piece("white knight");
                     pieces[7, 7] = new piece("white rook");
+
+                    pieces[5,0] = new piece("black bishop");
                     break;
 
                 case 1: //Queen mayhem
@@ -133,12 +139,77 @@ namespace chess
 
         public ref piece getPiece(int row, int column)
         {
-            return ref pieces[row, column];
+             return ref pieces[row, column];
+        }
+
+        public bool pieceExists(int row, int column)
+        {
+            if ((row < getSize() && row >= 0) && (column < getSize() && column >= 0))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void setPiece(piece piece, int i, int j)
         {
             pieces[i, j] = piece;
+        }
+
+        public void pieceMoves(int row, int column)
+        {
+            int boardSize = getSize();
+
+            possibleMoves.Clear();
+            piece movingPiece = pieces[row, column];
+
+            if (movingPiece.getType() == 11) //White Pawn
+            {
+                if (movingPiece.getMoves() == 0) //If First move
+                {
+                    if (pieceExists(row - 1, column)) //If not out of bounds
+                    {
+                        if (getPiece(row - 1, column).getType() == 0) //Check if square in front is empty
+                        {
+                            possibleMoves.Add(new int[] { row - 1, column }); //Add square in front to moves if empty
+                            if (pieceExists(row - 2, column)) //if square in front is empty, check if square twice in front is empty
+                            {
+                                if (getPiece(row - 2, column).getType() == 0)
+                                {
+                                    possibleMoves.Add(new int[] { row - 2, column }); //Add square twice in front to moves if empty
+                                }
+                            }
+                        }
+                    }
+                }
+                else //If not first move
+                {
+                    if (pieceExists(row - 1, column)) //If not out of bounds
+                    {
+                        if (getPiece(row - 1, column).getType() == 0) //Check if square in front is empty
+                        {
+                            possibleMoves.Add(new int[] { row - 1, column }); //Add square in front to moves if empty
+                        }
+                    }
+                }
+                if (pieceExists(row - 1, column + 1)) //If piece in front right is enemy add to possible moves
+                {
+                    if (getPiece(row - 1, column + 1).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 1, column + 1 });
+                    }
+                }
+                if (pieceExists(row - 1, column - 1)) //If piece in front left is enemy add to possible moves
+                {
+                    if (getPiece(row - 1, column - 1).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 1, column - 1 });
+                    }
+                }
+            }
         }
     }
 }

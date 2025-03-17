@@ -59,6 +59,8 @@ namespace chess
 
         private void gameChange(object sender, EventArgs e)
         {
+            boards[currentBoard].possibleMoves.Clear();
+
             Settings.lastPressed = new int[] { int.MaxValue, int.MaxValue };
 
             NumericUpDown n = sender as NumericUpDown;
@@ -110,13 +112,24 @@ namespace chess
         private void checkerClick(object sender, EventArgs e)
         {
             Button button = sender as Button;
+            bool moveMade = false;
             int[] pos = button.Tag as int[];
             Settings.lastPressed[0] = pos[0]; Settings.lastPressed[1] = pos[1];
             displayUI();
 
-            if (boards[currentBoard].getPiece(pos[0], pos[1]).getType() != 0)
+            foreach (int[] move in boards[currentBoard].possibleMoves) //If clicked square is trying to move
             {
-                //boards[currentBoard]. //
+                if(move == pos)
+                {
+                    //Move code here
+                    Settings.lastPressed = new int[] { int.MaxValue, int.MaxValue };
+                    moveMade = true;
+                }
+            }
+            if (boards[currentBoard].getPiece(pos[0], pos[1]).getType() != 0 && !moveMade) //If clicked square is selecting a piece
+            {
+                boards[currentBoard].pieceMoves(pos[0], pos[1]);
+                displayUI();
             }
         }
         
@@ -216,6 +229,14 @@ namespace chess
                 else { matchingButton.BackColor = Color.Green; }
             }
 
+            foreach (int[] move in boards[currentBoard].possibleMoves)
+            {
+                Button matchingButton = boards[currentBoard].getButton(move[0], move[1]);
+                if(matchingButton != null)
+                {
+                    matchingButton.BackColor = Color.Blue;
+                }
+            }
 
             //----------------------------------------------------------------
         }

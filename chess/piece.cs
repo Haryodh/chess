@@ -90,10 +90,45 @@ namespace chess
         {
             return name;
         }
-
-        public void pieceMoves(int row, int column)
+        public int getMoves()
         {
+            return moves;
+        }
 
+
+        public bool isWhite()
+        {
+            if (type < 100 && type != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool isBlack()
+        {
+            if (type > 100)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
+        public bool isEmpty()
+        {
+            if (type == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
