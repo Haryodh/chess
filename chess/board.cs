@@ -258,6 +258,145 @@ namespace chess
                 }
             }
             //--------------------------------------------------------------------------------------------------------------------------------------------------
+            else if (movingPiece.getType() == 12 && whiteTurn) //White Knight
+            {
+                if (pieceExists(row + 2, column - 1))
+                {
+                    if (getPiece(row + 2, column - 1).getType() == 0 || getPiece(row + 2, column - 1).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 2, column - 1 });
+                    }
+                }
+                if (pieceExists(row + 2, column + 1))
+                {
+                    if (getPiece(row + 2, column + 1).getType() == 0 || getPiece(row + 2, column + 1).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 2, column + 1 });
+                    }
+                }
+                if (pieceExists(row - 2, column + 1))
+                {
+                    if (getPiece(row - 2, column + 1).getType() == 0 || getPiece(row - 2, column + 1).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 2, column + 1 });
+                    }
+                }
+                if (pieceExists(row - 2, column - 1))
+                {
+                    if (getPiece(row - 2, column - 1).getType() == 0 || getPiece(row - 2, column - 1).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 2, column - 1 });
+                    }
+                }
+
+                if (pieceExists(row + 1, column + 2))
+                {
+                    if (getPiece(row + 1, column + 2).getType() == 0 || getPiece(row + 1, column + 2).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 1, column + 2 });
+                    }
+                }
+
+                if (pieceExists(row + 1, column + 2))
+                {
+                    if (getPiece(row + 1, column + 2).getType() == 0 || getPiece(row + 1, column + 2).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 1, column + 2 });
+                    }
+                }
+                if (pieceExists(row - 1, column + 2))
+                {
+                    if (getPiece(row - 1, column + 2).getType() == 0 || getPiece(row - 1, column + 2).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 1, column + 2 });
+                    }
+                }
+
+                if (pieceExists(row + 1, column - 2))
+                {
+                    if (getPiece(row + 1, column - 2).getType() == 0 || getPiece(row + 1, column - 2).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 1, column - 2 });
+                    }
+                }
+                if (pieceExists(row - 1, column - 2))
+                {
+                    if (getPiece(row - 1, column - 2).getType() == 0 || getPiece(row - 1, column - 2).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 1, column - 2 });
+                    }
+                }
+            }
+            //-----------------------------------------------------------------------------------------------------------------------
+            else if (movingPiece.getType() == 102 && !whiteTurn) //Black Knight
+            {
+                if (pieceExists(row + 2, column - 1))
+                {
+                    if (getPiece(row + 2, column - 1).getType() < 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 2, column - 1 });
+                    }
+                }
+                if (pieceExists(row + 2, column + 1))
+                {
+                    if (getPiece(row + 2, column + 1).getType() < 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 2, column + 1 });
+                    }
+                }
+                if (pieceExists(row - 2, column + 1))
+                {
+                    if (getPiece(row - 2, column + 1).getType() < 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 2, column + 1 });
+                    }
+                }
+                if (pieceExists(row - 2, column - 1))
+                {
+                    if (getPiece(row - 2, column - 1).getType() < 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 2, column - 1 });
+                    }
+                }
+
+                if (pieceExists(row + 1, column + 2))
+                {
+                    if (getPiece(row + 1, column + 2).getType() < 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 1, column + 2 });
+                    }
+                }
+
+                if (pieceExists(row + 1, column + 2))
+                {
+                    if (getPiece(row + 1, column + 2).getType() < 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 1, column + 2 });
+                    }
+                }
+                if (pieceExists(row - 1, column + 2))
+                {
+                    if (getPiece(row - 1, column + 2).getType() < 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 1, column + 2 });
+                    }
+                }
+
+                if (pieceExists(row + 1, column - 2))
+                {
+                    if (getPiece(row + 1, column - 2).getType() < 100)
+                    {
+                        possibleMoves.Add(new int[] { row + 1, column - 2 });
+                    }
+                }
+                if (pieceExists(row - 1, column - 2))
+                {
+                    if (getPiece(row - 1, column - 2).getType() < 100)
+                    {
+                        possibleMoves.Add(new int[] { row - 1, column - 2 });
+                    }
+                }
+            }
         }
     }
 }

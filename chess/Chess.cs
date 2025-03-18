@@ -120,13 +120,12 @@ namespace chess
             {
                 if (pos[0] == move[0] && pos[1] == move[1]) //If clicked square is a movement option.
                 {
-
                     boards[currentBoard].getPiece(Settings.lastPressed[0], Settings.lastPressed[1]).addMove(); //Add a move to moving piece
                     boards[currentBoard].setPiece(boards[currentBoard].getPiece(Settings.lastPressed[0], Settings.lastPressed[1]), pos[0], pos[1]); //Move the piece
                     boards[currentBoard].setPiece(new piece(0), Settings.lastPressed[0], Settings.lastPressed[1]); //Clear the original position of the piece
                     moveMade = true; //Move has been made
                     boards[currentBoard].whiteTurn = !boards[currentBoard].whiteTurn; //Change turns
-                    
+                    break;
                 }
             }
             boards[currentBoard].possibleMoves.Clear();
@@ -136,41 +135,9 @@ namespace chess
             }
 
 
-
-
-
-
-
-
             Settings.lastPressed[0] = pos[0]; Settings.lastPressed[1] = pos[1];
             displayUI();
             
-            
-
-
-            
-
-            //foreach (int[] move in boards[currentBoard].possibleMoves) //If clicked square is trying to move
-            //{
-            //    if(move == pos)
-            //    {
-            //        //Move code here
-            //        boards[currentBoard].setPiece(boards[currentBoard].getPiece(Settings.lastPressed[0], Settings.lastPressed[1]), pos[0], pos[1]);
-            //        Settings.lastPressed = new int[] { int.MaxValue, int.MaxValue };
-            //        moveMade = true;
-            //    }
-            //}
-            //if (boards[currentBoard].getPiece(pos[0], pos[1]).getType() != 0 && !moveMade) //If clicked square is selecting a piece
-            //{
-            //    boards[currentBoard].pieceMoves(pos[0], pos[1]);
-            //    displayUI();
-            //}
-            //else
-            //{
-            //    Settings.lastPressed = new int[] { int.MaxValue, int.MaxValue };
-            //    boards[currentBoard].possibleMoves.Clear();
-            //    displayUI();
-            //}
         }
         
 
