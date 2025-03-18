@@ -17,7 +17,7 @@ namespace chess
 
         public List<int[]> possibleMoves = new List<int[]>(); //List of possible moves for the selected piece.
         
-        
+        public bool whiteTurn = true; //Defines which turn it is, true = white. false = black.
 
         public board(int boardNum) { boardCatalogue(boardNum); } //Initlaize the board.
 
@@ -163,10 +163,11 @@ namespace chess
         {
             int boardSize = getSize();
 
-            possibleMoves.Clear();
+            
             piece movingPiece = pieces[row, column];
 
-            if (movingPiece.getType() == 11) //White Pawn
+            //---------------------------------------------------------------------------------------------------------------------------------------------
+            if (movingPiece.getType() == 11 && whiteTurn) //White Pawn
             {
                 if (movingPiece.getMoves() == 0) //If First move
                 {
@@ -195,14 +196,14 @@ namespace chess
                         }
                     }
                 }
-                if (pieceExists(row - 1, column + 1)) //If piece in front right is enemy add to possible moves
+                if (pieceExists(row - 1, column + 1)) //If piece in front left is enemy add to possible moves
                 {
                     if (getPiece(row - 1, column + 1).getType() > 100)
                     {
                         possibleMoves.Add(new int[] { row - 1, column + 1 });
                     }
                 }
-                if (pieceExists(row - 1, column - 1)) //If piece in front left is enemy add to possible moves
+                if (pieceExists(row - 1, column - 1)) //If piece in front right is enemy add to possible moves
                 {
                     if (getPiece(row - 1, column - 1).getType() > 100)
                     {
@@ -210,6 +211,53 @@ namespace chess
                     }
                 }
             }
+
+            //-----------------------------------------------------------------------------------------------------------------------------------------------
+            else if (movingPiece.getType() == 101 && !whiteTurn) //Black Pawn
+            {
+                if (movingPiece.getMoves() == 0) //If First move
+                {
+                    if (pieceExists(row + 1, column)) //If not out of bounds
+                    {
+                        if (getPiece(row + 1, column).getType() == 0) //Check if square in front is empty
+                        {
+                            possibleMoves.Add(new int[] { row + 1, column }); //Add square in front to moves if empty
+                            if (pieceExists(row + 2, column)) //if square in front is empty, check if square twice in front is empty
+                            {
+                                if (getPiece(row + 2, column).getType() == 0)
+                                {
+                                    possibleMoves.Add(new int[] { row + 2, column }); //Add square twice in front to moves if empty
+                                }
+                            }
+                        }
+                    }
+                }
+                else //If not first move
+                {
+                    if (pieceExists(row + 1, column)) //If not out of bounds
+                    {
+                        if (getPiece(row + 1, column).getType() == 0) //Check if square in front is empty
+                        {
+                            possibleMoves.Add(new int[] { row + 1, column }); //Add square in front to moves if empty
+                        }
+                    }
+                }
+                if (pieceExists(row + 1, column - 1)) //If piece in front left is enemy add to possible moves
+                {
+                    if (getPiece(row + 1, column - 1).getType() < 100 && getPiece(row + 1, column - 1).getType() > 0)
+                    {
+                        possibleMoves.Add(new int[] { row + 1, column - 1 });
+                    }
+                }
+                if (pieceExists(row + 1, column + 1)) //If piece in front right is enemy add to possible moves
+                {
+                    if (getPiece(row + 1, column + 1).getType() < 100 && getPiece(row + 1, column + 1).getType() > 0)
+                    {
+                        possibleMoves.Add(new int[] { row + 1, column + 1 });
+                    }
+                }
+            }
+            //--------------------------------------------------------------------------------------------------------------------------------------------------
         }
     }
 }

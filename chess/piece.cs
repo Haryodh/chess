@@ -94,6 +94,10 @@ namespace chess
         {
             return moves;
         }
+        public void addMove()
+        {
+            moves++;
+        }
 
 
         public bool isWhite()
