@@ -397,6 +397,524 @@ namespace chess
                     }
                 }
             }
+            //-------------------------------------------------------------------------------------------------------------------------
+            else if(movingPiece.getType() == 13 && whiteTurn) //White Bishop
+            {
+                int[] temp = new int[2];
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0]-1, temp[1]-1))
+                {
+                    temp[0]--; temp[1]--;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                    
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] + 1, temp[1] + 1))
+                {
+                    temp[0]++; temp[1]++;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1] + 1))
+                {
+                    temp[0]--; temp[1]++;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] + 1, temp[1] - 1))
+                {
+                    temp[0]++; temp[1]--;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+            }
+            //------------------------------------------------------------------------------------------------------------
+            else if (movingPiece.getType() == 103 && !whiteTurn) //Black Bishop
+            {
+                int[] temp = new int[2];
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1] - 1))
+                {
+                    temp[0]--; temp[1]--;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] + 1, temp[1] + 1))
+                {
+                    temp[0]++; temp[1]++;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1] + 1))
+                {
+                    temp[0]--; temp[1]++;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] + 1, temp[1] - 1))
+                {
+                    temp[0]++; temp[1]--;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+            }
+            //------------------------------------------------------------------------------------------------------------------------------
+            else if (movingPiece.getType() == 14 && whiteTurn) //White Rook
+            {
+                int[] temp = new int[2];
+                temp[0] = row; temp[1] = column;
+
+                while (pieceExists(temp[0]+1, temp[1]))
+                {
+                    temp[0]++;;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1]))
+                {
+                    temp[0]--; ;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0], temp[1] +1))
+                {
+                    temp[1]++; ;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0], temp[1] - 1))
+                {
+                    temp[1]--; ;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+            }
+            //---------------------------------------------------------------------------------------------------------------------------------
+            else if (movingPiece.getType() == 104 && !whiteTurn) //Black Rook
+            {
+                int[] temp = new int[2];
+                temp[0] = row; temp[1] = column;
+
+                while (pieceExists(temp[0] + 1, temp[1]))
+                {
+                    temp[0]++; ;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1]))
+                {
+                    temp[0]--; ;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0], temp[1] + 1))
+                {
+                    temp[1]++; ;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0], temp[1] - 1))
+                {
+                    temp[1]--; ;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+            }
+            //--------------------------------------------------------------------------------------------------
+            else if(movingPiece.getType() == 15 && whiteTurn) //White Queen
+            {
+                int[] temp = new int[2];
+                temp[0] = row; temp[1] = column;
+
+                while (pieceExists(temp[0] + 1, temp[1]))
+                {
+                    temp[0]++; ;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1]))
+                {
+                    temp[0]--; ;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0], temp[1] + 1))
+                {
+                    temp[1]++; ;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0], temp[1] - 1))
+                {
+                    temp[1]--; ;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1] - 1))
+                {
+                    temp[0]--; temp[1]--;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] + 1, temp[1] + 1))
+                {
+                    temp[0]++; temp[1]++;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1] + 1))
+                {
+                    temp[0]--; temp[1]++;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] + 1, temp[1] - 1))
+                {
+                    temp[0]++; temp[1]--;
+                    if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+            }
+            //-----------------------------------------------------------------------------------------------------------------------------------------------------
+            else if (movingPiece.getType() == 105 && !whiteTurn) //Black Queen
+            {
+                int[] temp = new int[2];
+                temp[0] = row; temp[1] = column;
+
+                while (pieceExists(temp[0] + 1, temp[1]))
+                {
+                    temp[0]++; ;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1]))
+                {
+                    temp[0]--; ;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0], temp[1] + 1))
+                {
+                    temp[1]++; ;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0], temp[1] - 1))
+                {
+                    temp[1]--; ;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1] - 1))
+                {
+                    temp[0]--; temp[1]--;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] + 1, temp[1] + 1))
+                {
+                    temp[0]++; temp[1]++;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] - 1, temp[1] + 1))
+                {
+                    temp[0]--; temp[1]++;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+                temp[0] = row; temp[1] = column;
+                while (pieceExists(temp[0] + 1, temp[1] - 1))
+                {
+                    temp[0]++; temp[1]--;
+                    if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
+                    {
+                        possibleMoves.Add(new int[] { temp[0], temp[1] });
+                        break;
+                    }
+                    else if (getPiece(temp[0], temp[1]).getType() > 100)
+                    {
+                        break;
+                    }
+                    else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
+                }
+            }
         }
     }
 }
