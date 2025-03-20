@@ -32,7 +32,7 @@ namespace chess
 
         private void Chess_Load(object sender, EventArgs e)
         {
-            boards[currentBoard] = new board(0);
+            boards[currentBoard] = new board(0); //Initialise the first board
             
 
             
@@ -41,7 +41,7 @@ namespace chess
 
             displayUI(); //Update size and data for the board.
             this.Controls.Add(Displays.boardPanel); //Add panel to the form
-            this.Controls.Add(Displays.resolutionDisplay); //Testing REMOVE
+            //this.Controls.Add(Displays.resolutionDisplay); //Testing REMOVE
 
             this.Controls.Add(Displays.gameSelector);
             Displays.gameSelector.Maximum = boards.Length-1;
@@ -59,23 +59,23 @@ namespace chess
 
         private void gameChange(object sender, EventArgs e)
         {
-            boards[currentBoard].possibleMoves.Clear();
+            boards[currentBoard].possibleMoves.Clear(); //Clears all possible moves to prevent errors.
 
-            Settings.lastPressed = new int[] { int.MaxValue, int.MaxValue };
+            Settings.lastPressed = new int[] { int.MaxValue, int.MaxValue }; //Resets last pressed to prevent errors.
 
-            NumericUpDown n = sender as NumericUpDown;
-            int newGameNumber = Convert.ToInt32(n.Value);
-            if (boards[newGameNumber] == null)
+            NumericUpDown n = sender as NumericUpDown; //Get the sender as a number selector.
+            int newGameNumber = Convert.ToInt32(n.Value); //Get the value of the number selector.
+            if (boards[newGameNumber] == null) //If the board doesn't exist then create it.
             {
                 boards[newGameNumber] = new board(newGameNumber);
             }
-            currentBoard = newGameNumber;
+            currentBoard = newGameNumber; //Set the current board to the new board.
 
 
 
             Displays.boardPanel.Controls.Clear(); //Clears all buttons from current panel.
 
-            addButtons(boards[currentBoard]);
+            addButtons(boards[currentBoard]); //Adds buttons to the panel.
             
 
         }
@@ -111,12 +111,12 @@ namespace chess
 
         private void checkerClick(object sender, EventArgs e)
         {
-            Button button = sender as Button;
-            bool moveMade = false;
-            int[] pos = button.Tag as int[];
+            Button button = sender as Button; //Get the sender as a button
+            bool moveMade = false; //Bool to check if a move has been made.
+            int[] pos = button.Tag as int[]; //Get the position of the button clicked.
 
 
-            foreach (int[] move in boards[currentBoard].possibleMoves)
+            foreach (int[] move in boards[currentBoard].possibleMoves) //Check if the clicked square is a movement option.
             {
                 if (pos[0] == move[0] && pos[1] == move[1]) //If clicked square is a movement option.
                 {
@@ -128,15 +128,15 @@ namespace chess
                     break;
                 }
             }
-            boards[currentBoard].possibleMoves.Clear();
-            if (!moveMade)
+            boards[currentBoard].possibleMoves.Clear(); //Clear all possible moves to prevent errors.
+            if (!moveMade) //If no move has been made then show possible moves for the new piece.
             {
                 boards[currentBoard].pieceMoves(pos[0], pos[1]);
             }
 
 
-            Settings.lastPressed[0] = pos[0]; Settings.lastPressed[1] = pos[1];
-            displayUI();
+            Settings.lastPressed[0] = pos[0]; Settings.lastPressed[1] = pos[1]; //Set the last pressed to the current square.
+            displayUI(); //Update the display.
             
         }
         
@@ -174,9 +174,9 @@ namespace chess
                 panelScaledHeight = panelScaledWidth;
             }
 
-            Displays.resolutionDisplay.Location = new Point(0, screenHeight - 70); //For testing REMOVE
-            Displays.resolutionDisplay.Size = new Size(screenWidth * 1 / 5 * testScale / 100, screenHeight * 1 / 5 * testScale / 100); //For testing REMOVE
-            Displays.resolutionDisplay.Text = ("Width:" + screenWidth + " Height:" + screenHeight + " Scale:" + Settings.getScale()); //For testing REMOVE
+            //Displays.resolutionDisplay.Location = new Point(0, screenHeight - 70); //For testing REMOVE
+            //Displays.resolutionDisplay.Size = new Size(screenWidth * 1 / 5 * testScale / 100, screenHeight * 1 / 5 * testScale / 100); //For testing REMOVE
+            //Displays.resolutionDisplay.Text = ("Width:" + screenWidth + " Height:" + screenHeight + " Scale:" + Settings.getScale()); //For testing REMOVE
 
 
             Displays.boardPanel.Location = new Point(screenWidth / 2 - panelScaledWidth / 2, screenHeight / 2 - panelScaledHeight / 2); //Puts the panel in the center
@@ -185,8 +185,8 @@ namespace chess
 
 
 
-            Displays.settingsButton.Size = new Size(panelScaledWidth * 1 / 3 * testScale / 100, panelScaledHeight * 1 / 3 * testScale / 100);
-            Displays.settingsButton.Location = new Point(screenWidth - Displays.settingsButton.Width - 20, 0);
+            Displays.settingsButton.Size = new Size(panelScaledWidth * 1 / 3 * testScale / 100, panelScaledHeight * 1 / 3 * testScale / 100); //Scales the settings button
+            Displays.settingsButton.Location = new Point(screenWidth - Displays.settingsButton.Width - 20, 0); // Puts the settings button in the top right.
 
             //-------------------------BUTTONS--------------------------------
 
@@ -215,7 +215,7 @@ namespace chess
                         }
 
 
-                        if (currentPiece != null)
+                        if (currentPiece != null) //If there is a piece on the square then set the image of the button to the piece image.
                         {
                             
                             currentButton.BackgroundImage = Settings.pieceImages[currentPiece.getType()];
@@ -226,23 +226,25 @@ namespace chess
                 }
             }
 
-            if (Settings.lastPressed[0] < boards[currentBoard].getSize() && Settings.lastPressed[1] < boards[currentBoard].getSize())
+            if (Settings.lastPressed[0] < boards[currentBoard].getSize() && Settings.lastPressed[1] < boards[currentBoard].getSize()) //If the last pressed button is on the board, then highlight it.
             {
                 Button matchingButton = boards[currentBoard].getButton(Settings.lastPressed[0], Settings.lastPressed[1]);
-                if (matchingButton.BackColor != Color.Red)
+                if (matchingButton.BackColor != Color.Red) //If it's not already red then make it red.
                 {
                     matchingButton.BackColor = Color.Red;
                 }
-                else { matchingButton.BackColor = Color.Green; }
+                else { matchingButton.BackColor = Color.Green; } //If it is red then make it green.
             }
 
-            foreach (int[] move in boards[currentBoard].possibleMoves)
+            foreach (int[] move in boards[currentBoard].possibleMoves) //Highlight all possible moves.
             {
                 Button matchingButton = boards[currentBoard].getButton(move[0], move[1]);
-                if(matchingButton != null)
+
+                if (matchingButton.BackColor != Color.Blue) //If it's not already blue then make it blue.
                 {
                     matchingButton.BackColor = Color.Blue;
                 }
+                else { matchingButton.BackColor = Color.Pink; } //If it is blue then make it pink.
             }
 
             //----------------------------------------------------------------

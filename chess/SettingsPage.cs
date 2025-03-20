@@ -45,7 +45,7 @@ namespace chess
             this.FormClosing += closing; // When closing run closing function.
         }
 
-        public void scaleChanged(object sender, EventArgs e)
+        public void scaleChanged(object sender, EventArgs e) //Set scale to value of trackbar.
         {
             TrackBar scaleBar = sender as TrackBar;
             Settings.setScale(scaleBar.Value);
@@ -87,14 +87,14 @@ namespace chess
 
         private void updateDisplay() //Scales properly.
         {
-            Displays.checkerOneColor.Location = new Point(0, 0); //ALL TEMP
-            Displays.checkerOneColor.Size = new Size(this.Width/10,this.Height/10);
+            Displays.checkerOneColor.Location = new Point(0, 0); //Set location & size of checker one color button.
+            Displays.checkerOneColor.Size = new Size(this.Width/10,this.Height/10); 
 
-            Displays.checkerTwoColor.Location = new Point(0, this.Height/10);
+            Displays.checkerTwoColor.Location = new Point(0, this.Height/10); //Set location & size of checker two color button.
             Displays.checkerTwoColor.Size = new Size(this.Width/10,this.Height/10);
 
-            Displays.scaleSelect.Location = new Point(0, (this.Height / 10) * 2);
-            Displays.scaleSelect.Size = new Size(this.Width / 10, this.Height / 10);
+            Displays.scaleSelect.Location = new Point(0, (this.Height / 10) * 2); //Set location & size of scale select trackbar.
+            Displays.scaleSelect.Size = new Size(this.Width / 2, this.Height / 10);
         }
 
         private void settingChanged()
@@ -102,7 +102,7 @@ namespace chess
             FormCollection fc = Application.OpenForms;
             foreach (Form f in fc)
             {
-                f.Size = new Size(f.Size.Width + 1, f.Size.Height);
+                f.Size = new Size(f.Size.Width + 1, f.Size.Height); //Update all forms to update the display. Horrible way to do this.
                 f.Size = new Size(f.Size.Width - 1, f.Size.Height);
             }
         }

@@ -30,7 +30,7 @@ namespace chess
         public static int getScale() { return scale; } 
         public static void setScale(int newScale) { scale = newScale; }
 
-        public static readonly Dictionary<int, Image> pieceImages = new Dictionary<int, Image>
+        public static readonly Dictionary<int, Image> pieceImages = new Dictionary<int, Image> //Dictionary linking piece types to images.
         {
             {0, null },
             {11, Resources.pawn },
@@ -47,7 +47,7 @@ namespace chess
             {106, Resources.black_king },
         };
 
-        public static int[] lastPressed = {int.MaxValue, int.MaxValue}; 
+        public static int[] lastPressed = {int.MaxValue, int.MaxValue}; //Last pressed square.
 
         
     }

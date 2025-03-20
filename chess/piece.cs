@@ -8,13 +8,13 @@ namespace chess
 {
     internal class piece
     {
-        private int moves = 0;
+        private int moves = 0; //Number of moves the piece has made
         private string name = "Empty";
         private int type = 0; //0 = empty, 1 = Pawn, 2 = Knight, 3 = Bishop, 4 = Rook, 5 = Queen, 6 = King , +10 for white, +100 for Black
 
         
 
-        public piece(int pieceNum)
+        public piece(int pieceNum) //Constructor for piece object with piece number
         {
 
             switch (pieceNum)
@@ -48,7 +48,7 @@ namespace chess
                 default: type = 0; name = "Empty"; break;
             }
         }
-        public piece(string pieceName)
+        public piece(string pieceName) //Constructor for piece object with piece name
         {
             switch (pieceName.ToLower())
             {
@@ -82,57 +82,21 @@ namespace chess
             }
         }
 
-        public int getType()
+        public int getType() //Getter for piece type
         {
             return type;
         }
-        public string getName()
+        public string getName() //Getter for piece name
         {
             return name;
         }
-        public int getMoves()
+        public int getMoves() //Getter for piece moves
         {
             return moves;
         }
-        public void addMove()
+        public void addMove() //Add move to piece
         {
             moves++;
-        }
-
-
-        public bool isWhite()
-        {
-            if (type < 100 && type != 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool isBlack()
-        {
-            if (type > 100)
-            {
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
-        }
-        public bool isEmpty()
-        {
-            if (type == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
     }

@@ -136,12 +136,12 @@ namespace chess
             }
         }
 
-        public ref piece getPiece(int row, int column)
+        public ref piece getPiece(int row, int column) //Returns ref to piece at row, column
         {
              return ref pieces[row, column];
         }
 
-        public bool pieceExists(int row, int column)
+        public bool pieceExists(int row, int column) //Check if piece exists at row, column
         {
             if ((row < getSize() && row >= 0) && (column < getSize() && column >= 0))
             {
@@ -153,14 +153,14 @@ namespace chess
             }
         }
 
-        public void setPiece(piece piece, int i, int j)
+        public void setPiece(piece piece, int i, int j) //Set piece at row, column
         {
             pieces[i, j] = piece;
         }
 
-        public void pieceMoves(int row, int column)
+        public void pieceMoves(int row, int column) //Get possible moves for piece at row, column
         {
-            int boardSize = getSize();
+            //int boardSize = getSize();
 
             
             piece movingPiece = pieces[row, column];
@@ -259,28 +259,28 @@ namespace chess
             //--------------------------------------------------------------------------------------------------------------------------------------------------
             else if (movingPiece.getType() == 12 && whiteTurn) //White Knight
             {
-                if (pieceExists(row + 2, column - 1))
+                if (pieceExists(row + 2, column - 1)) //If piece in L pattern exists add to moves. UP LEFT
                 {
                     if (getPiece(row + 2, column - 1).getType() == 0 || getPiece(row + 2, column - 1).getType() > 100)
                     {
                         possibleMoves.Add(new int[] { row + 2, column - 1 });
                     }
                 }
-                if (pieceExists(row + 2, column + 1))
+                if (pieceExists(row + 2, column + 1)) //If piece in L pattern exists add to moves. UP RIGHT
                 {
                     if (getPiece(row + 2, column + 1).getType() == 0 || getPiece(row + 2, column + 1).getType() > 100)
                     {
                         possibleMoves.Add(new int[] { row + 2, column + 1 });
                     }
                 }
-                if (pieceExists(row - 2, column + 1))
+                if (pieceExists(row - 2, column + 1)) //If piece in L pattern exists add to moves. DOWN LEFT
                 {
                     if (getPiece(row - 2, column + 1).getType() == 0 || getPiece(row - 2, column + 1).getType() > 100)
                     {
                         possibleMoves.Add(new int[] { row - 2, column + 1 });
                     }
                 }
-                if (pieceExists(row - 2, column - 1))
+                if (pieceExists(row - 2, column - 1)) //If piece in L pattern exists add to moves. DOWN RIGHT
                 {
                     if (getPiece(row - 2, column - 1).getType() == 0 || getPiece(row - 2, column - 1).getType() > 100)
                     {
@@ -288,7 +288,7 @@ namespace chess
                     }
                 }
 
-                if (pieceExists(row + 1, column + 2))
+                if (pieceExists(row + 1, column + 2)) //If piece in L pattern exists add to moves. RIGHT DOWN
                 {
                     if (getPiece(row + 1, column + 2).getType() == 0 || getPiece(row + 1, column + 2).getType() > 100)
                     {
@@ -296,14 +296,7 @@ namespace chess
                     }
                 }
 
-                if (pieceExists(row + 1, column + 2))
-                {
-                    if (getPiece(row + 1, column + 2).getType() == 0 || getPiece(row + 1, column + 2).getType() > 100)
-                    {
-                        possibleMoves.Add(new int[] { row + 1, column + 2 });
-                    }
-                }
-                if (pieceExists(row - 1, column + 2))
+                if (pieceExists(row - 1, column + 2)) //If piece in L pattern exists add to moves. RIGHT UP
                 {
                     if (getPiece(row - 1, column + 2).getType() == 0 || getPiece(row - 1, column + 2).getType() > 100)
                     {
@@ -311,14 +304,14 @@ namespace chess
                     }
                 }
 
-                if (pieceExists(row + 1, column - 2))
+                if (pieceExists(row + 1, column - 2)) //If piece in L pattern exists add to moves. LEFT DOWN
                 {
                     if (getPiece(row + 1, column - 2).getType() == 0 || getPiece(row + 1, column - 2).getType() > 100)
                     {
                         possibleMoves.Add(new int[] { row + 1, column - 2 });
                     }
                 }
-                if (pieceExists(row - 1, column - 2))
+                if (pieceExists(row - 1, column - 2)) //If piece in L pattern exists add to moves. LEFT UP
                 {
                     if (getPiece(row - 1, column - 2).getType() == 0 || getPiece(row - 1, column - 2).getType() > 100)
                     {
@@ -329,28 +322,28 @@ namespace chess
             //-----------------------------------------------------------------------------------------------------------------------
             else if (movingPiece.getType() == 102 && !whiteTurn) //Black Knight
             {
-                if (pieceExists(row + 2, column - 1))
+                if (pieceExists(row + 2, column - 1)) //If piece in L pattern exists add to moves. UP LEFT
                 {
                     if (getPiece(row + 2, column - 1).getType() < 100)
                     {
                         possibleMoves.Add(new int[] { row + 2, column - 1 });
                     }
                 }
-                if (pieceExists(row + 2, column + 1))
+                if (pieceExists(row + 2, column + 1)) //If piece in L pattern exists add to moves. UP RIGHT
                 {
-                    if (getPiece(row + 2, column + 1).getType() < 100)
+                    if (getPiece(row + 2, column + 1).getType() < 100) 
                     {
                         possibleMoves.Add(new int[] { row + 2, column + 1 });
                     }
                 }
-                if (pieceExists(row - 2, column + 1))
+                if (pieceExists(row - 2, column + 1)) //If piece in L pattern exists add to moves. DOWN RIGHT
                 {
                     if (getPiece(row - 2, column + 1).getType() < 100)
                     {
                         possibleMoves.Add(new int[] { row - 2, column + 1 });
                     }
                 }
-                if (pieceExists(row - 2, column - 1))
+                if (pieceExists(row - 2, column - 1)) //If piece in L pattern exists add to moves. DOWN LEFT
                 {
                     if (getPiece(row - 2, column - 1).getType() < 100)
                     {
@@ -358,22 +351,14 @@ namespace chess
                     }
                 }
 
-                if (pieceExists(row + 1, column + 2))
+                if (pieceExists(row + 1, column + 2)) //If piece in L pattern exists add to moves. RIGHT DOWN
                 {
                     if (getPiece(row + 1, column + 2).getType() < 100)
                     {
                         possibleMoves.Add(new int[] { row + 1, column + 2 });
                     }
                 }
-
-                if (pieceExists(row + 1, column + 2))
-                {
-                    if (getPiece(row + 1, column + 2).getType() < 100)
-                    {
-                        possibleMoves.Add(new int[] { row + 1, column + 2 });
-                    }
-                }
-                if (pieceExists(row - 1, column + 2))
+                if (pieceExists(row - 1, column + 2)) //If piece in L pattern exists add to moves. RIGHT UP
                 {
                     if (getPiece(row - 1, column + 2).getType() < 100)
                     {
@@ -381,14 +366,14 @@ namespace chess
                     }
                 }
 
-                if (pieceExists(row + 1, column - 2))
+                if (pieceExists(row + 1, column - 2)) //If piece in L pattern exists add to moves. LEFT DOWN
                 {
                     if (getPiece(row + 1, column - 2).getType() < 100)
                     {
                         possibleMoves.Add(new int[] { row + 1, column - 2 });
                     }
                 }
-                if (pieceExists(row - 1, column - 2))
+                if (pieceExists(row - 1, column - 2)) //If piece in L pattern exists add to moves. LEFT UP
                 {
                     if (getPiece(row - 1, column - 2).getType() < 100)
                     {
@@ -401,7 +386,7 @@ namespace chess
             {
                 int[] temp = new int[2];
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0]-1, temp[1]-1))
+                while (pieceExists(temp[0]-1, temp[1]-1)) //DIAGONAL UP LEFT
                 {
                     temp[0]--; temp[1]--;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -417,7 +402,7 @@ namespace chess
                     
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] + 1, temp[1] + 1))
+                while (pieceExists(temp[0] + 1, temp[1] + 1)) //DIAGONAL DOWN RIGHT
                 {
                     temp[0]++; temp[1]++;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -432,7 +417,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1] + 1))
+                while (pieceExists(temp[0] - 1, temp[1] + 1)) //DIAGONAL UP RIGHT
                 {
                     temp[0]--; temp[1]++;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -447,7 +432,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] + 1, temp[1] - 1))
+                while (pieceExists(temp[0] + 1, temp[1] - 1)) //DIAGONAL DOWN LEFT
                 {
                     temp[0]++; temp[1]--;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -467,7 +452,7 @@ namespace chess
             {
                 int[] temp = new int[2];
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1] - 1))
+                while (pieceExists(temp[0] - 1, temp[1] - 1)) //DIAGONAL UP LEFT
                 {
                     temp[0]--; temp[1]--;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -483,7 +468,7 @@ namespace chess
 
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] + 1, temp[1] + 1))
+                while (pieceExists(temp[0] + 1, temp[1] + 1)) //DIAGONAL DOWN RIGHT
                 {
                     temp[0]++; temp[1]++;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -498,7 +483,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1] + 1))
+                while (pieceExists(temp[0] - 1, temp[1] + 1)) //DIAGONAL UP RIGHT
                 {
                     temp[0]--; temp[1]++;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -513,7 +498,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] + 1, temp[1] - 1))
+                while (pieceExists(temp[0] + 1, temp[1] - 1)) //DIAGONAL DOWN LEFT
                 {
                     temp[0]++; temp[1]--;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -534,7 +519,7 @@ namespace chess
                 int[] temp = new int[2];
                 temp[0] = row; temp[1] = column;
 
-                while (pieceExists(temp[0]+1, temp[1]))
+                while (pieceExists(temp[0]+1, temp[1])) //HORIZONTAL UP
                 {
                     temp[0]++;;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -549,7 +534,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1]))
+                while (pieceExists(temp[0] - 1, temp[1])) //HORIZONTAL DOWN
                 {
                     temp[0]--; ;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -564,7 +549,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0], temp[1] +1))
+                while (pieceExists(temp[0], temp[1] +1)) //VERTICAL RIGHT
                 {
                     temp[1]++; ;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -579,7 +564,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0], temp[1] - 1))
+                while (pieceExists(temp[0], temp[1] - 1)) //VERTICAL LEFT
                 {
                     temp[1]--; ;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -600,7 +585,7 @@ namespace chess
                 int[] temp = new int[2];
                 temp[0] = row; temp[1] = column;
 
-                while (pieceExists(temp[0] + 1, temp[1]))
+                while (pieceExists(temp[0] + 1, temp[1])) //HORIZONTAL UP
                 {
                     temp[0]++; ;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -615,7 +600,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1]))
+                while (pieceExists(temp[0] - 1, temp[1])) //HORIZONTAL DOWN
                 {
                     temp[0]--; ;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -630,7 +615,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0], temp[1] + 1))
+                while (pieceExists(temp[0], temp[1] + 1)) //VERTICAL RIGHT
                 {
                     temp[1]++; ;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -645,7 +630,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0], temp[1] - 1))
+                while (pieceExists(temp[0], temp[1] - 1)) //VERTICAL LEFT
                 {
                     temp[1]--; ;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -666,7 +651,7 @@ namespace chess
                 int[] temp = new int[2];
                 temp[0] = row; temp[1] = column;
 
-                while (pieceExists(temp[0] + 1, temp[1]))
+                while (pieceExists(temp[0] + 1, temp[1])) //HORIZONTAL UP
                 {
                     temp[0]++; ;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -681,7 +666,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1]))
+                while (pieceExists(temp[0] - 1, temp[1])) //HORIZONTAL DOWN
                 {
                     temp[0]--; ;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -696,7 +681,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0], temp[1] + 1))
+                while (pieceExists(temp[0], temp[1] + 1)) //VERTICAL RIGHT
                 {
                     temp[1]++; ;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -711,7 +696,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0], temp[1] - 1))
+                while (pieceExists(temp[0], temp[1] - 1)) //VERTICAL LEFT
                 {
                     temp[1]--; ;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -726,7 +711,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1] - 1))
+                while (pieceExists(temp[0] - 1, temp[1] - 1)) //DIAGONAL UP LEFT
                 {
                     temp[0]--; temp[1]--;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -742,7 +727,7 @@ namespace chess
 
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] + 1, temp[1] + 1))
+                while (pieceExists(temp[0] + 1, temp[1] + 1)) //DIAGONAL DOWN RIGHT
                 {
                     temp[0]++; temp[1]++;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -757,7 +742,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1] + 1))
+                while (pieceExists(temp[0] - 1, temp[1] + 1)) //DIAGONAL UP RIGHT
                 {
                     temp[0]--; temp[1]++;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -772,7 +757,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] + 1, temp[1] - 1))
+                while (pieceExists(temp[0] + 1, temp[1] - 1)) //DIAGONAL DOWN LEFT
                 {
                     temp[0]++; temp[1]--;
                     if (getPiece(temp[0], temp[1]).getType() > 100)
@@ -793,7 +778,7 @@ namespace chess
                 int[] temp = new int[2];
                 temp[0] = row; temp[1] = column;
 
-                while (pieceExists(temp[0] + 1, temp[1]))
+                while (pieceExists(temp[0] + 1, temp[1])) //HORIZONTAL UP
                 {
                     temp[0]++; ;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -808,7 +793,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1]))
+                while (pieceExists(temp[0] - 1, temp[1])) //HORIZONTAL DOWN
                 {
                     temp[0]--; ;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -823,7 +808,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0], temp[1] + 1))
+                while (pieceExists(temp[0], temp[1] + 1)) //VERTICAL RIGHT
                 {
                     temp[1]++; ;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -838,7 +823,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0], temp[1] - 1))
+                while (pieceExists(temp[0], temp[1] - 1)) //VERTICAL LEFT
                 {
                     temp[1]--; ;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -853,7 +838,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1] - 1))
+                while (pieceExists(temp[0] - 1, temp[1] - 1)) //DIAGONAL UP LEFT
                 {
                     temp[0]--; temp[1]--;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -869,7 +854,7 @@ namespace chess
 
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] + 1, temp[1] + 1))
+                while (pieceExists(temp[0] + 1, temp[1] + 1)) //DIAGONAL DOWN RIGHT
                 {
                     temp[0]++; temp[1]++;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -884,7 +869,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] - 1, temp[1] + 1))
+                while (pieceExists(temp[0] - 1, temp[1] + 1)) //DIAGONAL UP RIGHT
                 {
                     temp[0]--; temp[1]++;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -899,7 +884,7 @@ namespace chess
                     else { possibleMoves.Add(new int[] { temp[0], temp[1] }); }
                 }
                 temp[0] = row; temp[1] = column;
-                while (pieceExists(temp[0] + 1, temp[1] - 1))
+                while (pieceExists(temp[0] + 1, temp[1] - 1)) //DIAGONAL DOWN LEFT
                 {
                     temp[0]++; temp[1]--;
                     if (getPiece(temp[0], temp[1]).getType() < 100 && getPiece(temp[0], temp[1]).getType() != 0)
@@ -915,36 +900,36 @@ namespace chess
                 }
             }
             //------------------------------------------------------------------------------------------
-            else if(movingPiece.getType() == 16 && whiteTurn)
+            else if(movingPiece.getType() == 16 && whiteTurn) //White King
             {
 
-                if (pieceExists(row, column - 1)) { if (getPiece(row, column - 1).getType() == 0 || getPiece(row, column - 1).getType() > 100) { possibleMoves.Add(new int[] { row, column - 1}); } }
-                if (pieceExists(row, column + 1)) { if (getPiece(row, column + 1).getType() == 0 || getPiece(row, column + 1).getType() > 100) { possibleMoves.Add(new int[] { row, column + 1}); } }
+                if (pieceExists(row, column - 1)) { if (getPiece(row, column - 1).getType() == 0 || getPiece(row, column - 1).getType() > 100) { possibleMoves.Add(new int[] { row, column - 1}); } } //Validate and add Left of the king
+                if (pieceExists(row, column + 1)) { if (getPiece(row, column + 1).getType() == 0 || getPiece(row, column + 1).getType() > 100) { possibleMoves.Add(new int[] { row, column + 1}); } } //Validate and add Right of the king
                 
-                if (pieceExists(row-1, column-1)) { if (getPiece(row-1, column-1).getType() == 0 || getPiece(row-1, column-1).getType() > 100) { possibleMoves.Add(new int[] { row-1, column-1 }); } }
-                if (pieceExists(row-1, column)) { if (getPiece(row-1, column).getType() == 0 || getPiece(row-1, column).getType() > 100) { possibleMoves.Add(new int[] { row-1, column }); } }
-                if (pieceExists(row-1, column+1)) { if (getPiece(row-1, column+1).getType() == 0 || getPiece(row-1, column+1).getType() > 100) { possibleMoves.Add(new int[] { row-1, column+1 }); } }
+                if (pieceExists(row-1, column-1)) { if (getPiece(row-1, column-1).getType() == 0 || getPiece(row-1, column-1).getType() > 100) { possibleMoves.Add(new int[] { row-1, column-1 }); } } //Validate and add Up Left of the king
+                if (pieceExists(row-1, column)) { if (getPiece(row-1, column).getType() == 0 || getPiece(row-1, column).getType() > 100) { possibleMoves.Add(new int[] { row-1, column }); } } //Validate and add Up of the king
+                if (pieceExists(row-1, column+1)) { if (getPiece(row-1, column+1).getType() == 0 || getPiece(row-1, column+1).getType() > 100) { possibleMoves.Add(new int[] { row-1, column+1 }); } } //Validate and add Up Right of the king
 
-                if (pieceExists(row + 1, column - 1)) { if (getPiece(row + 1, column - 1).getType() == 0 || getPiece(row + 1, column - 1).getType() > 100) { possibleMoves.Add(new int[] { row + 1, column - 1 }); } }
-                if (pieceExists(row + 1, column)) { if (getPiece(row + 1, column).getType() == 0 || getPiece(row + 1, column).getType() > 100) { possibleMoves.Add(new int[] { row + 1, column }); } }
-                if (pieceExists(row + 1, column + 1)) { if (getPiece(row + 1, column + 1).getType() == 0 || getPiece(row + 1, column + 1).getType() > 100) { possibleMoves.Add(new int[] { row + 1, column + 1 }); } }
+                if (pieceExists(row + 1, column - 1)) { if (getPiece(row + 1, column - 1).getType() == 0 || getPiece(row + 1, column - 1).getType() > 100) { possibleMoves.Add(new int[] { row + 1, column - 1 }); } } //Validate and add Bottom Left of the king
+                if (pieceExists(row + 1, column)) { if (getPiece(row + 1, column).getType() == 0 || getPiece(row + 1, column).getType() > 100) { possibleMoves.Add(new int[] { row + 1, column }); } } //Validate and add bottom of the king
+                if (pieceExists(row + 1, column + 1)) { if (getPiece(row + 1, column + 1).getType() == 0 || getPiece(row + 1, column + 1).getType() > 100) { possibleMoves.Add(new int[] { row + 1, column + 1 }); } } //Validate and add Bottom Right of the king
 
             }
 
-            else if (movingPiece.getType() == 106 && !whiteTurn)
+            else if (movingPiece.getType() == 106 && !whiteTurn) //Black King
             {
                 
 
-                if (pieceExists(row, column - 1)) { if (getPiece(row, column - 1).getType() == 0 || (getPiece(row, column - 1).getType() < 100 && getPiece(row, column - 1).getType() != 0)) { possibleMoves.Add(new int[] { row, column - 1 }); } }
-                if (pieceExists(row, column + 1)) { if (getPiece(row, column + 1).getType() == 0 || (getPiece(row, column + 1).getType() < 100 && getPiece(row, column + 1).getType() != 0)) { possibleMoves.Add(new int[] { row, column + 1 }); } }
+                if (pieceExists(row, column - 1)) { if (getPiece(row, column - 1).getType() == 0 || (getPiece(row, column - 1).getType() < 100 && getPiece(row, column - 1).getType() != 0)) { possibleMoves.Add(new int[] { row, column - 1 }); } } //Validate and add Left of the king
+                if (pieceExists(row, column + 1)) { if (getPiece(row, column + 1).getType() == 0 || (getPiece(row, column + 1).getType() < 100 && getPiece(row, column + 1).getType() != 0)) { possibleMoves.Add(new int[] { row, column + 1 }); } } //Validate and add Right of the king
 
-                if (pieceExists(row - 1, column - 1)) { if (getPiece(row - 1, column - 1).getType() == 0 || (getPiece(row - 1, column - 1).getType() < 100 && getPiece(row - 1, column - 1).getType() != 0)) { possibleMoves.Add(new int[] { row - 1, column - 1 }); } }
-                if (pieceExists(row - 1, column)) { if (getPiece(row - 1, column).getType() == 0 || (getPiece(row - 1, column).getType() < 100 && getPiece(row - 1, column).getType() != 0)) { possibleMoves.Add(new int[] { row - 1, column }); } }
-                if (pieceExists(row - 1, column + 1)) { if (getPiece(row - 1, column + 1).getType() == 0 || (getPiece(row - 1, column + 1).getType() < 100 && getPiece(row - 1, column + 1).getType() != 0)) { possibleMoves.Add(new int[] { row - 1, column + 1 }); } }
+                if (pieceExists(row - 1, column - 1)) { if (getPiece(row - 1, column - 1).getType() == 0 || (getPiece(row - 1, column - 1).getType() < 100 && getPiece(row - 1, column - 1).getType() != 0)) { possibleMoves.Add(new int[] { row - 1, column - 1 }); } } //Validate and add Up Left of the king
+                if (pieceExists(row - 1, column)) { if (getPiece(row - 1, column).getType() == 0 || (getPiece(row - 1, column).getType() < 100 && getPiece(row - 1, column).getType() != 0)) { possibleMoves.Add(new int[] { row - 1, column }); } } //Validate and add Up of the king
+                if (pieceExists(row - 1, column + 1)) { if (getPiece(row - 1, column + 1).getType() == 0 || (getPiece(row - 1, column + 1).getType() < 100 && getPiece(row - 1, column + 1).getType() != 0)) { possibleMoves.Add(new int[] { row - 1, column + 1 }); } } //Validate and add Up Right of the king
 
-                if (pieceExists(row + 1, column - 1)) { if (getPiece(row + 1, column - 1).getType() == 0 || (getPiece(row + 1, column - 1).getType() < 100 && getPiece(row + 1, column - 1).getType() != 0)) { possibleMoves.Add(new int[] { row + 1, column - 1 }); } }
-                if (pieceExists(row + 1, column)) { if (getPiece(row + 1, column).getType() == 0 || (getPiece(row + 1, column).getType() < 100 && getPiece(row + 1, column).getType() != 0)) { possibleMoves.Add(new int[] { row + 1, column }); } }
-                if (pieceExists(row + 1, column + 1)) { if (getPiece(row + 1, column + 1).getType() == 0 || (getPiece(row + 1, column + 1).getType() < 100 && getPiece(row + 1, column + 1).getType() != 0)) { possibleMoves.Add(new int[] { row + 1, column + 1 }); } }
+                if (pieceExists(row + 1, column - 1)) { if (getPiece(row + 1, column - 1).getType() == 0 || (getPiece(row + 1, column - 1).getType() < 100 && getPiece(row + 1, column - 1).getType() != 0)) { possibleMoves.Add(new int[] { row + 1, column - 1 }); } } //Validate and add Bottom Left of the king
+                if (pieceExists(row + 1, column)) { if (getPiece(row + 1, column).getType() == 0 || (getPiece(row + 1, column).getType() < 100 && getPiece(row + 1, column).getType() != 0)) { possibleMoves.Add(new int[] { row + 1, column }); } } //Validate and add bottom of the king
+                if (pieceExists(row + 1, column + 1)) { if (getPiece(row + 1, column + 1).getType() == 0 || (getPiece(row + 1, column + 1).getType() < 100 && getPiece(row + 1, column + 1).getType() != 0)) { possibleMoves.Add(new int[] { row + 1, column + 1 }); } } //Validate and add Bottom Right of the king
 
             }
         }
