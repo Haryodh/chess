@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace chess
 {
-    internal class board
+    internal class Board
     {
         private Button[,] gridButtons; //Create an empty 2D-Array of buttons with an undefined size.
-        private piece[,] pieces; //Create an empty 2D-Array of buttons with an undefined size.
+        private Piece[,] pieces; //Create an empty 2D-Array of buttons with an undefined size.
 
         public List<int[]> possibleMoves = new List<int[]>(); //List of possible moves for the selected piece.
         
@@ -21,7 +21,7 @@ namespace chess
 
         public bool gameOver = false;
 
-        public board(int boardNum) { boardCatalogue(boardNum); } //Initlaize the board.
+        public Board(int boardNum) { boardCatalogue(boardNum); } //Initlaize the board.
 
         public ref Button getButton(int i, int j) { return ref gridButtons[i, j]; } //Get a certain button (by ref)
 
@@ -43,105 +43,105 @@ namespace chess
             {
                 case 0: // Default Game setup
                     size = 8;
-                    gridButtons = new Button[size, size]; pieces = new piece[size, size];
+                    gridButtons = new Button[size, size]; pieces = new Piece[size, size];
 
                     for (int i = 0; i < size; i++)
                     {
                         for (int j = 0; j < size; j++)
                         {
-                            pieces[i, j] = new piece("Empty");
+                            pieces[i, j] = new Piece("Empty");
                         }
                     }
 
-                    pieces[0, 0] = new piece("black rook");
-                    pieces[0, 1] = new piece("black knight");
-                    pieces[0, 2] = new piece("black bishop");
-                    pieces[0, 3] = new piece("black queen");
-                    pieces[0, 4] = new piece("black king");
-                    pieces[0, 5] = new piece("black bishop");
-                    pieces[0, 6] = new piece("black knight");
-                    pieces[0, 7] = new piece("black rook");
+                    pieces[0, 0] = new Piece("black rook");
+                    pieces[0, 1] = new Piece("black knight");
+                    pieces[0, 2] = new Piece("black bishop");
+                    pieces[0, 3] = new Piece("black queen");
+                    pieces[0, 4] = new Piece("black king");
+                    pieces[0, 5] = new Piece("black bishop");
+                    pieces[0, 6] = new Piece("black knight");
+                    pieces[0, 7] = new Piece("black rook");
                     for(int i = 0; i < size; i++)
                     {
-                        pieces[1, i] = new piece("black pawn");
-                        pieces[6, i] = new piece("white pawn");
+                        pieces[1, i] = new Piece("black pawn");
+                        pieces[6, i] = new Piece("white pawn");
                     }
-                    pieces[7, 0] = new piece("white rook");
-                    pieces[7, 1] = new piece("white knight");
-                    pieces[7, 2] = new piece("white bishop");
-                    pieces[7, 3] = new piece("white queen");
-                    pieces[7, 4] = new piece("white king");
-                    pieces[7, 5] = new piece("white bishop");
-                    pieces[7, 6] = new piece("white knight");
-                    pieces[7, 7] = new piece("white rook");
+                    pieces[7, 0] = new Piece("white rook");
+                    pieces[7, 1] = new Piece("white knight");
+                    pieces[7, 2] = new Piece("white bishop");
+                    pieces[7, 3] = new Piece("white queen");
+                    pieces[7, 4] = new Piece("white king");
+                    pieces[7, 5] = new Piece("white bishop");
+                    pieces[7, 6] = new Piece("white knight");
+                    pieces[7, 7] = new Piece("white rook");
 
                     break;
 
                 case 1: //Queen mayhem
                     size = 10;
-                    gridButtons = new Button[size, size]; pieces = new piece[size, size];
+                    gridButtons = new Button[size, size]; pieces = new Piece[size, size];
 
                     for (int i = 0; i < size; i++)
                     {
                         for (int j = 0; j < size; j++)
                         {
-                            pieces[i, j] = new piece("Empty");
+                            pieces[i, j] = new Piece("Empty");
                         }
                     }
 
                     for (int i = 0; i < size; i++)
                     {
-                        pieces[0, i] = new piece("black queen");
-                        pieces[1, i] = new piece("black queen");
+                        pieces[0, i] = new Piece("black queen");
+                        pieces[1, i] = new Piece("black queen");
 
-                        pieces[size-2, i] = new piece("white queen");
-                        pieces[size-1, i] = new piece("white queen");
+                        pieces[size-2, i] = new Piece("white queen");
+                        pieces[size-1, i] = new Piece("white queen");
                     }
 
-                    pieces[0, size / 2 - 1] = new piece("black king");
-                    pieces[size - 1, size / 2] = new piece("white king");
+                    pieces[0, size / 2 - 1] = new Piece("black king");
+                    pieces[size - 1, size / 2] = new Piece("white king");
                     break;
 
 
 
                 default:
                     size = 8;
-                    gridButtons = new Button[size, size]; pieces = new piece[size, size];
+                    gridButtons = new Button[size, size]; pieces = new Piece[size, size];
 
                     for (int i = 0; i < size; i++)
                     {
                         for (int j = 0; j < size; j++)
                         {
-                            pieces[i, j] = new piece("Empty");
+                            pieces[i, j] = new Piece("Empty");
                         }
                     }
 
-                    pieces[0, 0] = new piece("black rook");
-                    pieces[0, 1] = new piece("black knight");
-                    pieces[0, 2] = new piece("black bishop");
-                    pieces[0, 3] = new piece("black queen");
-                    pieces[0, 4] = new piece("black king");
-                    pieces[0, 5] = new piece("black bishop");
-                    pieces[0, 6] = new piece("black knight");
-                    pieces[0, 7] = new piece("black rook");
+                    pieces[0, 0] = new Piece("black rook");
+                    pieces[0, 1] = new Piece("black knight");
+                    pieces[0, 2] = new Piece("black bishop");
+                    pieces[0, 3] = new Piece("black queen");
+                    pieces[0, 4] = new Piece("black king");
+                    pieces[0, 5] = new Piece("black bishop");
+                    pieces[0, 6] = new Piece("black knight");
+                    pieces[0, 7] = new Piece("black rook");
                     for (int i = 0; i < size; i++)
                     {
-                        pieces[1, i] = new piece("black pawn");
-                        pieces[6, i] = new piece("white pawn");
+                        pieces[1, i] = new Piece("black pawn");
+                        pieces[6, i] = new Piece("white pawn");
                     }
-                    pieces[7, 0] = new piece("white rook");
-                    pieces[7, 1] = new piece("white knight");
-                    pieces[7, 2] = new piece("white bishop");
-                    pieces[7, 3] = new piece("white queen");
-                    pieces[7, 4] = new piece("white king");
-                    pieces[7, 5] = new piece("white bishop");
-                    pieces[7, 6] = new piece("white knight");
-                    pieces[7, 7] = new piece("white rook");
+                    pieces[7, 0] = new Piece("white rook");
+                    pieces[7, 1] = new Piece("white knight");
+                    pieces[7, 2] = new Piece("white bishop");
+                    pieces[7, 3] = new Piece("white queen");
+                    pieces[7, 4] = new Piece("white king");
+                    pieces[7, 5] = new Piece("white bishop");
+                    pieces[7, 6] = new Piece("white knight");
+                    pieces[7, 7] = new Piece("white rook");
                     break;
             }
         }
 
-        public ref piece getPiece(int row, int column) //Returns ref to piece at row, column
+        public ref Piece getPiece(int row, int column) //Returns ref to piece at row, column
         {
              return ref pieces[row, column];
         }
@@ -158,7 +158,7 @@ namespace chess
             }
         }
 
-        public void setPiece(piece piece, int i, int j) //Set piece at row, column
+        public void setPiece(Piece piece, int i, int j) //Set piece at row, column
         {
             pieces[i, j] = piece;
         }
@@ -167,7 +167,7 @@ namespace chess
         {
             bool whiteKing = false;
             bool blackKing = false;
-            foreach(piece piece in pieces)
+            foreach(Piece piece in pieces)
             {
                 if(piece.getType() == 16)
                 {
@@ -190,7 +190,7 @@ namespace chess
             //int boardSize = getSize();
 
             
-            piece movingPiece = pieces[row, column];
+            Piece movingPiece = pieces[row, column];
 
             //----------------------------------------------------------------------------------------------------------------------------------------------
             if (movingPiece.getType() == 11 && whiteTurn) //White Pawn

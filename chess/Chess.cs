@@ -20,7 +20,7 @@ namespace chess
 
         SettingsPage settings = new SettingsPage();
 
-        board[] boards = new board[10]; //Array of boards
+        Board[] boards = new Board[10]; //Array of boards
         int currentBoard = 0;
         
 
@@ -33,7 +33,7 @@ namespace chess
         private void Chess_Load(object sender, EventArgs e)
         {
 
-            boards[currentBoard] = new board(0); //Initialise the first board
+            boards[currentBoard] = new Board(0); //Initialise the first board
             
 
             
@@ -68,11 +68,11 @@ namespace chess
             int newGameNumber = Convert.ToInt32(n.Value); //Get the value of the number selector.
             if (boards[newGameNumber] == null) //If the board doesn't exist then create it.
             {
-                boards[newGameNumber] = new board(newGameNumber);
+                boards[newGameNumber] = new Board(newGameNumber);
             }
             else if (boards[newGameNumber].gameOver)
             {
-                boards[newGameNumber] = new board(newGameNumber);
+                boards[newGameNumber] = new Board(newGameNumber);
             }
             currentBoard = newGameNumber; //Set the current board to the new board.
 
@@ -85,7 +85,7 @@ namespace chess
 
         }
 
-        private void addButtons(board board)
+        private void addButtons(Board board)
         {
 
             int size = board.getSize();
@@ -130,7 +130,7 @@ namespace chess
                     {
                         boards[currentBoard].getPiece(Settings.lastPressed[0], Settings.lastPressed[1]).addMove(); //Add a move to moving piece
                         boards[currentBoard].setPiece(boards[currentBoard].getPiece(Settings.lastPressed[0], Settings.lastPressed[1]), pos[0], pos[1]); //Move the piece
-                        boards[currentBoard].setPiece(new piece(0), Settings.lastPressed[0], Settings.lastPressed[1]); //Clear the original position of the piece
+                        boards[currentBoard].setPiece(new Piece(0), Settings.lastPressed[0], Settings.lastPressed[1]); //Clear the original position of the piece
                         moveMade = true; //Move has been made
                         boards[currentBoard].whiteTurn = !boards[currentBoard].whiteTurn; //Change turns
                         break;
@@ -208,7 +208,7 @@ namespace chess
                 {
 
                     Button currentButton = boards[currentBoard].getButton(i, j); //set currentButton as current button
-                    piece currentPiece = boards[currentBoard].getPiece(i, j); //set currentPiece as the current piece
+                    Piece currentPiece = boards[currentBoard].getPiece(i, j); //set currentPiece as the current piece
                     if (currentButton != null)
                     {
                         currentButton.Size = new Size(currentButton.Parent.Width / size, currentButton.Parent.Height / size); //Size the button appropriately

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace chess
 {
-    internal class piece
+    internal class Piece
     {
         private int moves = 0; //Number of moves the piece has made
         private string name = "Empty";
@@ -14,7 +14,7 @@ namespace chess
 
         
 
-        public piece(int pieceNum) //Constructor for piece object with piece number
+        public Piece(int pieceNum) //Constructor for piece object with piece number
         {
 
             switch (pieceNum)
@@ -48,7 +48,7 @@ namespace chess
                 default: type = 0; name = "Empty"; break;
             }
         }
-        public piece(string pieceName) //Constructor for piece object with piece name
+        public Piece(string pieceName) //Constructor for piece object with piece name
         {
             switch (pieceName.ToLower())
             {

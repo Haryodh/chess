@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="board.cs" />
+    <Compile Include="Board.cs" />
     <Compile Include="Chess.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,7 +54,7 @@
       <DependentUpon>Chess.cs</DependentUpon>
     </Compile>
     <Compile Include="displays.cs" />
-    <Compile Include="piece.cs" />
+    <Compile Include="Piece.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
