@@ -32,6 +32,7 @@ namespace chess
 
         private void Chess_Load(object sender, EventArgs e)
         {
+
             boards[currentBoard] = new board(0); //Initialise the first board
             
 
@@ -66,6 +67,10 @@ namespace chess
             NumericUpDown n = sender as NumericUpDown; //Get the sender as a number selector.
             int newGameNumber = Convert.ToInt32(n.Value); //Get the value of the number selector.
             if (boards[newGameNumber] == null) //If the board doesn't exist then create it.
+            {
+                boards[newGameNumber] = new board(newGameNumber);
+            }
+            else if (boards[newGameNumber].gameOver)
             {
                 boards[newGameNumber] = new board(newGameNumber);
             }
@@ -111,33 +116,37 @@ namespace chess
 
         private void checkerClick(object sender, EventArgs e)
         {
+            
             Button button = sender as Button; //Get the sender as a button
             bool moveMade = false; //Bool to check if a move has been made.
             int[] pos = button.Tag as int[]; //Get the position of the button clicked.
 
 
-            foreach (int[] move in boards[currentBoard].possibleMoves) //Check if the clicked square is a movement option.
+            if (!boards[currentBoard].gameOver)
             {
-                if (pos[0] == move[0] && pos[1] == move[1]) //If clicked square is a movement option.
+                foreach (int[] move in boards[currentBoard].possibleMoves) //Check if the clicked square is a movement option.
                 {
-                    boards[currentBoard].getPiece(Settings.lastPressed[0], Settings.lastPressed[1]).addMove(); //Add a move to moving piece
-                    boards[currentBoard].setPiece(boards[currentBoard].getPiece(Settings.lastPressed[0], Settings.lastPressed[1]), pos[0], pos[1]); //Move the piece
-                    boards[currentBoard].setPiece(new piece(0), Settings.lastPressed[0], Settings.lastPressed[1]); //Clear the original position of the piece
-                    moveMade = true; //Move has been made
-                    boards[currentBoard].whiteTurn = !boards[currentBoard].whiteTurn; //Change turns
-                    break;
+                    if (pos[0] == move[0] && pos[1] == move[1]) //If clicked square is a movement option.
+                    {
+                        boards[currentBoard].getPiece(Settings.lastPressed[0], Settings.lastPressed[1]).addMove(); //Add a move to moving piece
+                        boards[currentBoard].setPiece(boards[currentBoard].getPiece(Settings.lastPressed[0], Settings.lastPressed[1]), pos[0], pos[1]); //Move the piece
+                        boards[currentBoard].setPiece(new piece(0), Settings.lastPressed[0], Settings.lastPressed[1]); //Clear the original position of the piece
+                        moveMade = true; //Move has been made
+                        boards[currentBoard].whiteTurn = !boards[currentBoard].whiteTurn; //Change turns
+                        break;
+                    }
                 }
-            }
-            boards[currentBoard].possibleMoves.Clear(); //Clear all possible moves to prevent errors.
-            if (!moveMade) //If no move has been made then show possible moves for the new piece.
-            {
-                boards[currentBoard].pieceMoves(pos[0], pos[1]);
-            }
+                boards[currentBoard].possibleMoves.Clear(); //Clear all possible moves to prevent errors.
+                if (!moveMade) //If no move has been made then show possible moves for the new piece.
+                {
+                    boards[currentBoard].pieceMoves(pos[0], pos[1]);
+                }
 
 
-            Settings.lastPressed[0] = pos[0]; Settings.lastPressed[1] = pos[1]; //Set the last pressed to the current square.
-            displayUI(); //Update the display.
-            
+                Settings.lastPressed[0] = pos[0]; Settings.lastPressed[1] = pos[1]; //Set the last pressed to the current square.
+                boards[currentBoard].isGameOver(); //Check if king was captured.
+                displayUI(); //Update the display.
+            }
         }
         
 

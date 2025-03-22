@@ -12,12 +12,14 @@ namespace chess
 {
     internal class board
     {
-        private Button[,] gridButtons; //Create an empty 2D-Array of buttons.
-        private piece[,] pieces;
+        private Button[,] gridButtons; //Create an empty 2D-Array of buttons with an undefined size.
+        private piece[,] pieces; //Create an empty 2D-Array of buttons with an undefined size.
 
         public List<int[]> possibleMoves = new List<int[]>(); //List of possible moves for the selected piece.
         
         public bool whiteTurn = true; //Defines which turn it is, true = white. false = black.
+
+        public bool gameOver = false;
 
         public board(int boardNum) { boardCatalogue(boardNum); } //Initlaize the board.
 
@@ -95,6 +97,9 @@ namespace chess
                         pieces[size-2, i] = new piece("white queen");
                         pieces[size-1, i] = new piece("white queen");
                     }
+
+                    pieces[0, size / 2 - 1] = new piece("black king");
+                    pieces[size - 1, size / 2] = new piece("white king");
                     break;
 
 
@@ -156,6 +161,28 @@ namespace chess
         public void setPiece(piece piece, int i, int j) //Set piece at row, column
         {
             pieces[i, j] = piece;
+        }
+
+        public bool isGameOver()
+        {
+            bool whiteKing = false;
+            bool blackKing = false;
+            foreach(piece piece in pieces)
+            {
+                if(piece.getType() == 16)
+                {
+                    whiteKing = true;
+                }
+                if(piece.getType() == 106)
+                {
+                    blackKing = true;
+                }
+            }
+            if(whiteKing && blackKing)
+            {
+                return false ;
+            }
+            else { gameOver = true; return true; }
         }
 
         public void pieceMoves(int row, int column) //Get possible moves for piece at row, column
